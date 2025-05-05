@@ -6,288 +6,135 @@ This script is an extension of our previously posted SuperTrend AI indicator tha
 
 
 
-🔶  USAGE 
+🔶  USAGE
 
-  
+
 
 The...
 PineScript code:
 
 Pine Script™ indicator
 AI SuperTrend Clustering Oscillator [LuxAlgo]
-Copy code
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-// This work is licensed under a Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) https://creativecommons.org/licenses/by-nc-sa/4.0/
-// © LuxAlgo
+//  This  work  is  licensed  under  a  Attribution-NonCommercial-ShareAlike  4.0  International  (CC  BY-NC-SA  4.0)  https://creativecommons.org/licenses/by-nc-sa/4.0/
+//  ©  LuxAlgo
 //@version=5
-indicator("AI SuperTrend Clustering Oscillator [LuxAlgo]", "LuxAlgo - AI SuperTrend Clustering Oscillator")
+indicator("AI  SuperTrend  Clustering  Oscillator  [LuxAlgo]",  "LuxAlgo  -  AI  SuperTrend  Clustering  Oscillator")
 //------------------------------------------------------------------------------
 //Settings
 //-----------------------------------------------------------------------------{
-length = input(10, 'ATR Length')
-minMult = input.int(1, 'Factor Range', minval = 0, inline = 'factor')
-maxMult = input.int(5, '', minval = 0, inline = 'factor')
-step    = input.float(.5, 'Step', minval = 0, step = 0.1)
-smooth = input.float(1, minval = 1)
-//Trigger error
-if minMult > maxMult
-    runtime.error('Minimum factor is greater than maximum factor in the range')
+length  =  input(10,  'ATR  Length')
+minMult  =  input.int(1,  'Factor  Range',  minval  =  0,  inline  =  'factor')
+maxMult  =  input.int(5,  '',  minval  =  0,  inline  =  'factor')
+step        =  input.float(.5,  'Step',  minval  =  0,  step  =  0.1)
+smooth  =  input.float(1,  minval  =  1)
+//Trigger  error
+if  minMult  >  maxMult
+        runtime.error('Minimum  factor  is  greater  than  maximum  factor  in  the  range')
 //Optimization
-maxIter = input.int(1000, 'Maximum Iteration Steps', minval = 0, group = 'Optimization')
-maxData = input.int(10000, 'Historical Bars Calculation', minval = 0, group = 'Optimization')
+maxIter  =  input.int(1000,  'Maximum  Iteration  Steps',  minval  =  0,  group  =  'Optimization')
+maxData  =  input.int(10000,  'Historical  Bars  Calculation',  minval  =  0,  group  =  'Optimization')
 //Style
-bullCss = input(color.new(#5b9cf6, 50), 'Bullish', inline = 'bull', group = 'Style')
-strongBullCss = input(color.new(#5b9cf6, 28), 'Strong', inline = 'bull', group = 'Style')
-neutCss = input(#9598a1, 'Neutral', inline = 'neut', group = 'Style')
-bearCss = input(color.new(#f77c80, 50), 'Bearish', inline = 'bear', group = 'Style')
-strongBearCss = input(color.new(#f77c80, 28), 'Strong', inline = 'bear', group = 'Style')
+bullCss  =  input(color.new(#5b9cf6,  50),  'Bullish',  inline  =  'bull',  group  =  'Style')
+strongBullCss  =  input(color.new(#5b9cf6,  28),  'Strong',  inline  =  'bull',  group  =  'Style')
+neutCss  =input(#9598a1,'Neutral',inline='neut',group='Style')
+bearCss=input(color.new(#f77c80,50),'Bearish',inline='bear',group='Style')
+strongBearCss=input(color.new(#f77c80,28),'Strong',inline='bear',group='Style')
 //-----------------------------------------------------------------------------}
 //UDT's
 //-----------------------------------------------------------------------------{
-type supertrend
-    float upper = hl2
-    float lower = hl2
-    float output
-    int trend
-type vector
-    array<float> out
+typesupertrend
+floatupper=hl2
+floatlower=hl2
+floatoutput
+inttrend
+typevector
+array<float>out
 //-----------------------------------------------------------------------------}
 //Supertrend
 //-----------------------------------------------------------------------------{
-var holder = array.new<supertrend>(0)
-var factors = array.new<float>(0)
-//Populate supertrend type array
-if barstate.isfirst
-    for i = 0 to int((maxMult - minMult) / step)
-        factors.push(minMult + i * step)
-        holder.push(supertrend.new())
-atr = ta.atr(length)
-//Compute Supertrend for multiple factors
-k = 0
-for factor in factors
-    get_spt = holder.get(k)
-    up = hl2 + atr * factor
-    dn = hl2 - atr * factor
-    
-    get_spt.upper := close[1] < get_spt.upper ? math.min(up, get_spt.upper) : up
-    get_spt.lower := close[1] > get_spt.lower ? math.max(dn, get_spt.lower) : dn
-    get_spt.trend := close > get_spt.upper ? 1 : close < get_spt.lower ? 0 : get_spt.trend
-    get_spt.output := get_spt.trend == 1 ? get_spt.lower : get_spt.upper
-    k += 1
+varholder=array.new<supertrend>(0)
+varfactors=array.new<float>(0)
+//Populatesupertrendtypearray
+ifbarstate.isfirst
+fori=0toint((maxMult-minMult)/step)
+factors.push(minMult+i*step)
+holder.push(supertrend.new())
+atr=ta.atr(length)
+//ComputeSupertrendformultiplefactors
+k=0
+forfactorinfactors
+get_spt=holder.get(k)
+up=hl2+atr*factor
+dn=hl2-atr*factor
+
+get_spt.upper:=close[1]<get_spt.upper?math.min(up,get_spt.upper):up
+get_spt.lower:=close[1]>get_spt.lower?math.max(dn,get_spt.lower):dn
+get_spt.trend:=close>get_spt.upper?1:close<get_spt.lower?0:get_spt.trend
+get_spt.output:=get_spt.trend==1?get_spt.lower:get_spt.upper
+k+=1
 //-----------------------------------------------------------------------------}
-//K-means clustering
+//K-meansclustering
 //-----------------------------------------------------------------------------{
-data = array.new<float>(0)
-//Populate data arrays
-if last_bar_index - bar_index <= maxData
-    for element in holder
-        data.push(close - element.output)
-//Intitalize centroids using quartiles
-centroids = array.new<float>(0)
+data=array.new<float>(0)
+//Populatedataarrays
+iflast_bar_index-bar_index<=maxData
+forelementinholder
+data.push(close-element.output)
+//Intitalizecentroidsusingquartiles
+centroids=array.new<float>(0)
 centroids.push(data.percentile_linear_interpolation(25))
 centroids.push(data.percentile_linear_interpolation(50))
 centroids.push(data.percentile_linear_interpolation(75))
-//Intialize clusters
-var array<vector> clusters = na
-if last_bar_index - bar_index <= maxData
-    for _ = 0 to maxIter
-        clusters := array.from(vector.new(array.new<float>(0)), vector.new(array.new<float>(0)), vector.new(array.new<float>(0)))
-        
-        //Assign value to cluster
-        for value in data
-            dist = array.new<float>(0)
-            for centroid in centroids
-                dist.push(math.abs(value - centroid))
-            idx = dist.indexof(dist.min())
-            if idx != -1
-                clusters.get(idx).out.push(value)
-            
-        //Update centroids
-        new_centroids = array.new<float>(0)
-        for cluster_ in clusters
-            new_centroids.push(cluster_.out.avg())
-        //Test if centroid changed
-        if new_centroids.get(0) == centroids.get(0) and new_centroids.get(1) == centroids.get(1) and new_centroids.get(2) == centroids.get(2)
-            break
-        centroids := new_centroids
+//Intializeclusters
+vararray<vector>clusters=na
+iflast_bar_index-bar_index<=maxData
+for_=0tomaxIter
+clusters:=array.from(vector.new(array.new<float>(0)),vector.new(array.new<float>(0)),vector.new(array.new<float>(0)))
+
+//Assignvaluetocluster
+forvalueindata
+dist=array.new<float>(0)
+forcentroidincentroids
+dist.push(math.abs(value-centroid))
+idx=dist.indexof(dist.min())
+ifidx!=-1
+clusters.get(idx).out.push(value)
+
+//Updatecentroids
+new_centroids=array.new<float>(0)
+forcluster_inclusters
+new_centroids.push(cluster_.out.avg())
+//Testifcentroidchanged
+ifnew_centroids.get(0)==centroids.get(0)andnew_centroids.get(1)==centroids.get(1)andnew_centroids.get(2)==centroids.get(2)
+break
+centroids:=new_centroids
 //-----------------------------------------------------------------------------}
-//Get centroids
+//Getcentroids
 //-----------------------------------------------------------------------------{
-//Get associated supertrend
-var float bull = 0
-var float neut = 0
-var float bear = 0
-var den = 0
-if not na(clusters)
-    bull += 2/(smooth+1) * nz(centroids.get(2) - bull)
-    neut += 2/(smooth+1) * nz(centroids.get(1) - neut)
-    bear += 2/(smooth+1) * nz(centroids.get(0) - bear)
-    den += 1
+//Getassociatedsupertrend
+varfloatbull=0
+varfloatneut=0
+varfloatbear=0
+varden=0
+ifnotna(clusters)
+bull+=2/(smooth+1)*nz(centroids.get(2)-bull)
+neut+=2/(smooth+1)*nz(centroids.get(1)-neut)
+bear+=2/(smooth+1)*nz(centroids.get(0)-bear)
+den+=1
 //-----------------------------------------------------------------------------}
 //Plots
 //-----------------------------------------------------------------------------{
-plot_bull = plot(math.max(bull, 0), color = na, editable = false)
-plot_bull_ext = plot(math.max(bear, 0), 'Strong Bullish'
-  , bear > 0 ? strongBullCss : na
-  , style = plot.style_circles)
-plot_bear = plot(math.min(bear, 0), color = na, editable = false)
-plot_bear_ext = plot(math.min(bull, 0), 'Strong Bearish'
-  , bull < 0 ? strongBearCss : na
-  , style = plot.style_circles)
-plot(neut, 'Consensus', neutCss)
-fill(plot_bull, plot_bull_ext, bull, math.max(bear, 0), bullCss, color.new(chart.bg_color, 100))
-fill(plot_bear_ext, plot_bear, math.min(bull, 0), bear, color.new(chart.bg_color, 100), bearCss)
-hline(0, linestyle = hline.style_solid)
+plot_bull=plot(math.max(bull,0),color=na,editable=false)
+plot_bull_ext=plot(math.max(bear,0),'StrongBullish'
+,bear>0?strongBullCss:na
+,style=plot.style_circles)
+plot_bear=plot(math.min(bear,0),color=na,editable=false)
+plot_bear_ext=plot(math.min(bull,0),'StrongBearish'
+,bull<0?strongBearCss:na
+,style=plot.style_circles)
+plot(neut,'Consensus',neutCss)
+fill(plot_bull,plot_bull_ext,bull,math.max(bear,0),bullCss,color.new(chart.bg_color,100))
+fill(plot_bear_ext,plot_bear,math.min(bull,0),bear,color.new(chart.bg_color,100),bearCss)
+hline(0,linestyle=hline.style_solid)
 //-----------------------------------------------------------------------------}
 Expand (152 lines)

@@ -30,15 +30,15 @@ Copy code
 18
 19
 20
-// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
-// © exlux99
+//ThissourcecodeissubjecttothetermsoftheMozillaPublicLicense2.0athttps://mozilla.org/MPL/2.0/
+//©exlux99
 //@version=5
-strategy("EURUSD COT Strategy",overlay=true)
-long_noncom   = request.security("QUANDL:CFTC/"+'099741'+'_F_L_ALL|1', "W", close) 
-short_noncom  = request.security("QUANDL:CFTC/"+'099741'+'_F_L_ALL|2', "W", close) 
-net_noncomercial = long_noncom-short_noncom
-long = net_noncomercial > 0 
-short = net_noncomercial < 0 
+strategy("EURUSDCOTStrategy",overlay=true)
+long_noncom=request.security("QUANDL:CFTC/"+'099741'+'_F_L_ALL|1',"W",close)
+short_noncom=request.security("QUANDL:CFTC/"+'099741'+'_F_L_ALL|2',"W",close)
+net_noncomercial=long_noncom-short_noncom
+long=net_noncomercial>0
+short=net_noncomercial<0
 strategy.entry("long",strategy.long,when=long)
 strategy.entry("short",strategy.short,when=short)
 Expand (20 lines)

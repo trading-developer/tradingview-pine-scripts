@@ -109,81 +109,81 @@ Copy code
 91
 92
 93
-// This work is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0) https://creativecommons.org/licenses/by-nc-sa/4.0/
-// © Trendoscope Pty Ltd
-//                                       ░▒             
-//                                  ▒▒▒   ▒▒      
-//                              ▒▒▒▒▒     ▒▒      
-//                      ▒▒▒▒▒▒▒░     ▒     ▒▒          
-//                  ▒▒▒▒▒▒           ▒     ▒▒          
-//             ▓▒▒▒       ▒        ▒▒▒▒▒▒▒▒▒▒▒  
-//   ▒▒▒▒▒▒▒▒▒▒▒ ▒        ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒         
-//   ▒  ▒       ░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░        
-//   ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒▒▒▒▒▒▒▒         
-//   ▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ ▒▒                       
-//    ▒▒▒▒▒         ▒▒▒▒▒▒▒                            
-//                 ▒▒▒▒▒▒▒▒▒                           
-//                ▒▒▒▒▒ ▒▒▒▒▒                          
-//               ░▒▒▒▒   ▒▒▒▒▓      ████████╗██████╗ ███████╗███╗   ██╗██████╗  ██████╗ ███████╗ ██████╗ ██████╗ ██████╗ ███████╗
-//              ▓▒▒▒▒     ▒▒▒▒      ╚══██╔══╝██╔══██╗██╔════╝████╗  ██║██╔══██╗██╔═══██╗██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
-//              ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒        ██║   ██████╔╝█████╗  ██╔██╗ ██║██║  ██║██║   ██║███████╗██║     ██║   ██║██████╔╝█████╗ 
-//             ▒▒▒▒▒       ▒▒▒▒▒       ██║   ██╔══██╗██╔══╝  ██║╚██╗██║██║  ██║██║   ██║╚════██║██║     ██║   ██║██╔═══╝ ██╔══╝  
-//            ▒▒▒▒▒         ▒▒▒▒▒      ██║   ██║  ██║███████╗██║ ╚████║██████╔╝╚██████╔╝███████║╚██████╗╚██████╔╝██║     ███████╗
-//             ▒▒             ▒   
+//ThisworkislicensedunderCreativeCommonsAttribution-NonCommercial-ShareAlike4.0InternationalLicense(CCBY-NC-SA4.0)https://creativecommons.org/licenses/by-nc-sa/4.0/
+//©TrendoscopePtyLtd
+//░▒
+//▒▒▒▒▒
+//▒▒▒▒▒▒▒
+//▒▒▒▒▒▒▒░▒▒▒
+//▒▒▒▒▒▒▒▒▒
+//▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+//▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+//▒▒░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░
+//▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒▒▒▒▒▒▒▒
+//▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+//▒▒▒▒▒▒▒▒▒▒▒▒
+//▒▒▒▒▒▒▒▒▒
+//▒▒▒▒▒▒▒▒▒▒
+//░▒▒▒▒▒▒▒▒▓████████╗██████╗███████╗███╗██╗██████╗██████╗███████╗██████╗██████╗██████╗███████╗
+//▓▒▒▒▒▒▒▒▒╚══██╔══╝██╔══██╗██╔════╝████╗██║██╔══██╗██╔═══██╗██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝
+//▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██║██████╔╝█████╗██╔██╗██║██║██║██║██║███████╗██║██║██║██████╔╝█████╗
+//▒▒▒▒▒▒▒▒▒▒██║██╔══██╗██╔══╝██║╚██╗██║██║██║██║██║╚════██║██║██║██║██╔═══╝██╔══╝
+//▒▒▒▒▒▒▒▒▒▒██║██║██║███████╗██║╚████║██████╔╝╚██████╔╝███████║╚██████╗╚██████╔╝██║███████╗
+//▒▒▒
 //
 //@version=5
-// indicator("Master Supertrend [Trendoscope]", "MST [Trendoscope]", overlay = true)
-strategy("Master Supertrend Strategy [Trendoscope]", "MSTS [Trendoscope]", overlay=true, initial_capital=1000,
-         default_qty_type=strategy.percent_of_equity, default_qty_value=10, commission_type=strategy.commission.percent, 
-         pyramiding=1, commission_value=0.05, close_entries_rule="ANY", margin_long=100, margin_short=100,
-         max_lines_count=500, max_labels_count=500, max_boxes_count=500, use_bar_magnifier=false)
-import HeWhoMustNotBeNamed/ta/1 as eta loading...
-import HeWhoMustNotBeNamed/arrayutils/22 as pa loading...
-supertrendType = input.string('Plus/Minus Range', 'Range Type', ['Plus/Minus Range', 'Ladder TR', 'True Range', 'Standard Deviation'], 'Type of range used for supertrend calculation')
-rangeType = input.string('high', 'Applied Calculation', ['sma', 'ema', 'hma', 'rma', 'wma', 'high', 'median'], 'Applied calculation method on the range before using them for calculation of supertrend stops')
-length = input.int(60, 'Length', 10, 1000, 10, tooltip = 'Supertrend range calculation length')
-multiplier = input.int(2, 'Multiplier', 2, 100, 1, tooltip='Supertrend range multiplier')
-useClosePrices = input.bool(true, 'Use Close Price', tooltip = 'Use close price as reference instad of high/low for calculation of stop')
-waitForClose = input.bool(true, 'Wait for Close', tooltip = 'Wait for close before changing the direction and change direction only if close price has breached the stop line')
-useDiminishingRange = input.bool(true, 'Diminishing Stop Distance', tooltip = 'When selected stop distance from reference price can only decrease and not increase')
-float ladderPositiveAtr = na
-float ladderNegativeAtr = na
-if(supertrendType == 'Ladder TR')
-    var plusLadderAtr = array.new<float>()
-    var minusLadderAtr = array.new<float>()
-    if(open < close)
-        pa.push(plusLadderAtr, ta.tr, length)
-    else
-        pa.push(minusLadderAtr, ta.tr, length)
-    ladderPositiveAtr := pa.ma(plusLadderAtr, rangeType, length)
-    ladderNegativeAtr := pa.ma(minusLadderAtr, rangeType, length)
-plusRange = supertrendType == 'Plus/Minus Range' ? math.max(high-open, high-close[1]) : supertrendType == 'Ladder TR'? ladderPositiveAtr : supertrendType == 'True Range' ? ta.tr : ta.stdev(close, length, true)
-minusRange = supertrendType == 'Plus/Minus Range' ? math.max(open-low, close[1]-low) : supertrendType == 'Ladder TR'? ladderNegativeAtr : supertrendType == 'True Range' ? ta.tr : ta.stdev(close, length, true)
-appliedPlusRange = supertrendType == 'Ladder TR'? plusRange : eta.ma(plusRange, rangeType, length)
-appliedMinusRange = supertrendType == 'Ladder TR'? minusRange: eta.ma(minusRange, rangeType, length)
-var direction = 1
-var derivedPlusRange = appliedPlusRange*multiplier
-var derivedMinusRange = appliedMinusRange*multiplier
-currentDerivedPlusRange = appliedPlusRange*multiplier
-derivedPlusRange := direction < 0 and useDiminishingRange? math.min(nz(derivedPlusRange,currentDerivedPlusRange), currentDerivedPlusRange) : currentDerivedPlusRange
-currentDerivedMinusRange = appliedMinusRange*multiplier
-derivedMinusRange := direction > 0 and useDiminishingRange? math.min(nz(derivedMinusRange,currentDerivedMinusRange), currentDerivedMinusRange) : currentDerivedMinusRange
-buyStopCurrent = (useClosePrices? close : low) - derivedMinusRange
-var buyStop = buyStopCurrent
-sellStopCurrent = (useClosePrices? close : high) + derivedPlusRange
-var sellStop = sellStopCurrent
-buyStop:= direction > 0? math.max(nz(buyStop, buyStopCurrent), buyStopCurrent) : buyStopCurrent
-sellStop:=direction < 0? math.min(nz(sellStop, sellStopCurrent), sellStopCurrent) : sellStopCurrent
-direction := direction > 0 and (waitForClose?close:low) < buyStop? -1 :
-                 direction < 0 and (waitForClose?close:high) > sellStop? 1 : direction
-supertrend = direction[1] > 0? buyStop : sellStop
-plot(supertrend, 'Supertrend', direction[1]>0? color.red:color.green)
-plot(direction, "direction", display = display.data_window)
-plot(strategy.equity, "Equity", display = display.data_window)
-plot(strategy.openprofit, "Open Profit", display = display.data_window)
-plot(strategy.opentrades, "Open Trades", display = display.data_window)
-if(direction > 0)
-    strategy.entry("Long", strategy.long)
-if(direction < 0)
-    strategy.entry("Short", strategy.short)
+//indicator("MasterSupertrend[Trendoscope]","MST[Trendoscope]",overlay=true)
+strategy("MasterSupertrendStrategy[Trendoscope]","MSTS[Trendoscope]",overlay=true,initial_capital=1000,
+default_qty_type=strategy.percent_of_equity,default_qty_value=10,commission_type=strategy.commission.percent,
+pyramiding=1,commission_value=0.05,close_entries_rule="ANY",margin_long=100,margin_short=100,
+max_lines_count=500,max_labels_count=500,max_boxes_count=500,use_bar_magnifier=false)
+importHeWhoMustNotBeNamed/ta/1aseta loading...
+importHeWhoMustNotBeNamed/arrayutils/22aspa loading...
+supertrendType=input.string('Plus/MinusRange','RangeType',['Plus/MinusRange','LadderTR','TrueRange','StandardDeviation'],'Typeofrangeusedforsupertrendcalculation')
+rangeType=input.string('high','AppliedCalculation',['sma','ema','hma','rma','wma','high','median'],'Appliedcalculationmethodontherangebeforeusingthemforcalculationofsupertrendstops')
+length=input.int(60,'Length',10,1000,10,tooltip='Supertrendrangecalculationlength')
+multiplier=input.int(2,'Multiplier',2,100,1,tooltip='Supertrendrangemultiplier')
+useClosePrices=input.bool(true,'UseClosePrice',tooltip='Useclosepriceasreferenceinstadofhigh/lowforcalculationofstop')
+waitForClose=input.bool(true,'WaitforClose',tooltip='Waitforclosebeforechangingthedirectionandchangedirectiononlyifclosepricehasbreachedthestopline')
+useDiminishingRange=input.bool(true,'DiminishingStopDistance',tooltip='Whenselectedstopdistancefromreferencepricecanonlydecreaseandnotincrease')
+floatladderPositiveAtr=na
+floatladderNegativeAtr=na
+if(supertrendType=='LadderTR')
+varplusLadderAtr=array.new<float>()
+varminusLadderAtr=array.new<float>()
+if(open<close)
+pa.push(plusLadderAtr,ta.tr,length)
+else
+pa.push(minusLadderAtr,ta.tr,length)
+ladderPositiveAtr:=pa.ma(plusLadderAtr,rangeType,length)
+ladderNegativeAtr:=pa.ma(minusLadderAtr,rangeType,length)
+plusRange=supertrendType=='Plus/MinusRange'?math.max(high-open,high-close[1]):supertrendType=='LadderTR'?ladderPositiveAtr:supertrendType=='TrueRange'?ta.tr:ta.stdev(close,length,true)
+minusRange=supertrendType=='Plus/MinusRange'?math.max(open-low,close[1]-low):supertrendType=='LadderTR'?ladderNegativeAtr:supertrendType=='TrueRange'?ta.tr:ta.stdev(close,length,true)
+appliedPlusRange=supertrendType=='LadderTR'?plusRange:eta.ma(plusRange,rangeType,length)
+appliedMinusRange=supertrendType=='LadderTR'?minusRange:eta.ma(minusRange,rangeType,length)
+vardirection=1
+varderivedPlusRange=appliedPlusRange*multiplier
+varderivedMinusRange=appliedMinusRange*multiplier
+currentDerivedPlusRange=appliedPlusRange*multiplier
+derivedPlusRange:=direction<0anduseDiminishingRange?math.min(nz(derivedPlusRange,currentDerivedPlusRange),currentDerivedPlusRange):currentDerivedPlusRange
+currentDerivedMinusRange=appliedMinusRange*multiplier
+derivedMinusRange:=direction>0anduseDiminishingRange?math.min(nz(derivedMinusRange,currentDerivedMinusRange),currentDerivedMinusRange):currentDerivedMinusRange
+buyStopCurrent=(useClosePrices?close:low)-derivedMinusRange
+varbuyStop=buyStopCurrent
+sellStopCurrent=(useClosePrices?close:high)+derivedPlusRange
+varsellStop=sellStopCurrent
+buyStop:=direction>0?math.max(nz(buyStop,buyStopCurrent),buyStopCurrent):buyStopCurrent
+sellStop:=direction<0?math.min(nz(sellStop,sellStopCurrent),sellStopCurrent):sellStopCurrent
+direction:=direction>0and(waitForClose?close:low)<buyStop?-1:
+direction<0and(waitForClose?close:high)>sellStop?1:direction
+supertrend=direction[1]>0?buyStop:sellStop
+plot(supertrend,'Supertrend',direction[1]>0?color.red:color.green)
+plot(direction,"direction",display=display.data_window)
+plot(strategy.equity,"Equity",display=display.data_window)
+plot(strategy.openprofit,"OpenProfit",display=display.data_window)
+plot(strategy.opentrades,"OpenTrades",display=display.data_window)
+if(direction>0)
+strategy.entry("Long",strategy.long)
+if(direction<0)
+strategy.entry("Short",strategy.short)
 Expand (93 lines)

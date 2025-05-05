@@ -8,21 +8,11 @@ PineScript code:
 
 Pine Script™ strategy
 Trend Ravi Trial
-Copy code
-1
-2
-3
-4
-5
-6
-7
-8
-9
-// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
-// © abhimanyoo
+//  This  source  code  is  subject  to  the  terms  of  the  Mozilla  Public  License  2.0  at  https://mozilla.org/MPL/2.0/
+//  ©  abhimanyoo
 //@version=4
 strategy("test")
-if bar_index < 100
-    strategy.entry("buy", strategy.long, 10, when=strategy.position_size <= 0)
-    strategy.entry("sell", strategy.short, 10, when=strategy.position_size > 0)
+if  bar_index  <  100
+        strategy.entry("buy",  strategy.long,  10,  when=strategy.position_size  <=  0)
+        strategy.entry("sell",  strategy.short,  10,  when=strategy.position_size  >  0)
 plot(strategy.equity)

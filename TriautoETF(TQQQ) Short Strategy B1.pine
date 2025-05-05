@@ -13,39 +13,19 @@ PineScript code:
 
 Pine Script™ strategy
 TriautoETF(TQQQ) Short Strategy B1
-Copy code
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
-// © BBcom
-//@version=5    
-strategy("TriautoETF(TQQQ) Short Strategy B1","TSSB1", overlay = true)
-// QQQ
-QQQ1 = request.security("QQQ","D", ta.hma(close, 2))
-QQQ2 = request.security("QQQ","D", ta.vwma(close, 193))
-QQQ3 = request.security("QQQ","D", ta.ema(close, 9))
-QQQ4 = request.security("QQQ","D", ta.ema(close, 14))
-// 基準線表示
-ShortLine = ta.vwma(close,193)
-plot(ShortLine,title="Short Line",color=color.purple,linewidth=2)
-// 売買の注文
-strategy.entry(id = "Entry", direction = strategy.short, when = ta.crossover(QQQ2, QQQ1) ,comment="Short") 
-strategy.close(id = "Entry", when = ta.crossover(QQQ3, QQQ4) or ta.crossover(QQQ3, QQQ2) , comment="Close")
+//  This  source  code  is  subject  to  the  terms  of  the  Mozilla  Public  License  2.0  at  https://mozilla.org/MPL/2.0/
+//  ©  BBcom
+//@version=5
+strategy("TriautoETF(TQQQ)  Short  Strategy  B1","TSSB1",  overlay  =  true)
+//  QQQ
+QQQ1  =  request.security("QQQ","D",  ta.hma(close,  2))
+QQQ2  =  request.security("QQQ","D",  ta.vwma(close,  193))
+QQQ3  =  request.security("QQQ","D",  ta.ema(close,  9))
+QQQ4  =  request.security("QQQ","D",  ta.ema(close,  14))
+//  基準線表示
+ShortLine  =  ta.vwma(close,193)
+plot(ShortLine,title="Short  Line",color=color.purple,linewidth=2)
+//  売買の注文
+strategy.entry(id  =  "Entry",  direction  =  strategy.short,  when  =  ta.crossover(QQQ2,  QQQ1)  ,comment="Short")
+strategy.close(id  =  "Entry",  when  =  ta.crossover(QQQ3,  QQQ4)  or  ta.crossover(QQQ3,  QQQ2)  ,  comment="Close")
 Expand (19 lines)

@@ -17,18 +17,9 @@ PineScript code:
 
 Pine Script™ strategy
 Trend trader Strategy
-Copy code
-1
-2
-3
-4
-5
-6
-7
-8
-// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
-// © SoftKill21
+//  This  source  code  is  subject  to  the  terms  of  the  Mozilla  Public  License  2.0  at  https://mozilla.org/MPL/2.0/
+//  ©  SoftKill21
 //@version=4
-strategy("My Script")
+strategy("My  Script")
 plot(close)
-//if you want acess to the better version of this, just message me :)
+//if  you  want  acess  to  the  better  version  of  this,  just  message  me  :)

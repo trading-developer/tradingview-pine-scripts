@@ -9,7 +9,6 @@ PineScript code:
 
 Pine Script™ strategy
 MarketGod for Tradingview(strategy)
-Copy code
 This document contains many ambiguous unicode characters
 Disable Ambiguous Highlight
 1
@@ -697,10 +696,10 @@ Disable Ambiguous Highlight
 683
 684
 685
-//@version=4 
+//@version=4
 maxBarsBack=5000,
-studyName='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝗳𝗼𝗿 𝗧𝗿𝗮𝗱𝗶𝗻𝗴𝘃𝗶𝗲𝘄' ,
-studyDate='© @𝗵𝗲𝗿𝗶𝗳 | 𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱𝘅 𝗧𝗩𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 | 𝗨𝗽𝗱𝗮𝘁𝗲𝗱 𝗔𝘂𝗴𝘂𝘀𝘁 𝟮𝟬𝟮𝟭 | 𝘃𝟯.𝟬.𝟬'
+studyName='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝗳𝗼𝗿  𝗧𝗿𝗮𝗱𝗶𝗻𝗴𝘃𝗶𝗲𝘄'  ,
+studyDate='©  @𝗵𝗲𝗿𝗶𝗳  |  𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱𝘅  𝗧𝗩𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  |  𝗨𝗽𝗱𝗮𝘁𝗲𝗱  𝗔𝘂𝗴𝘂𝘀𝘁  𝟮𝟬𝟮𝟭  |  𝘃𝟯.𝟬.𝟬'
 long_stopPrice=0.0,
 shor_stopPrice=0.0,
 longTakeProfit=0.0,
@@ -716,55 +715,55 @@ kumo_breakout_score=0.0,
 span_cross_score=0.0,
 lag_line_cross_score=0.0,
 lag_line_placement_score=0.0,
-strategy('MarketGod for Tradingview(strategy)',shorttitle=studyName,overlay=true,calc_on_every_tick=true,process_orders_on_close=true,initial_capital=10000,default_qty_type=strategy.percent_of_equity,default_qty_value=100,slippage=2,commission_type=strategy.commission.percent,commission_value=.072,max_bars_back=maxBarsBack)
+strategy('MarketGod  for  Tradingview(strategy)',shorttitle=studyName,overlay=true,calc_on_every_tick=true,process_orders_on_close=true,initial_capital=10000,default_qty_type=strategy.percent_of_equity,default_qty_value=100,slippage=2,commission_type=strategy.commission.percent,commission_value=.072,max_bars_back=maxBarsBack)
 haclose:=(open+high+low+close)/4,
 haopen:=na(haopen[1])?(open+close)/2:(haopen[1]+haclose[1])/2,
 hahigh=max(high,max(haopen,haclose)),
 halow=min(low,min(haopen,haclose))
-c= haclose,
+c=  haclose,
 C=haclose,
 L=halow,
 H=hahigh,
-O=haopen, 
-price=haclose, 
+O=haopen,
+price=haclose,
 src=haclose,
 source=haclose
-//## !<-------------------------------------------------------ᴅᴇᴄʟᴀʀᴀᴛɪᴏɴꜱ,ꜰᴜɴᴄᴛɪᴏɴꜱ,ᴠᴀʀɪᴀʙʟᴇꜱ------------------------------------------------------->
-//## !<---------ꜱᴛʀɪɴɢꜱ------------>
+//##  !<-------------------------------------------------------ᴅᴇᴄʟᴀʀᴀᴛɪᴏɴꜱ,ꜰᴜɴᴄᴛɪᴏɴꜱ,ᴠᴀʀɪᴀʙʟᴇꜱ------------------------------------------------------->
+//##  !<---------ꜱᴛʀɪɴɢꜱ------------>
 tab='  ',
 tab2='   ',
 tab3='      ',
-MGSwitchTitle='𝗧𝗼𝗴𝗴𝗹𝗲 𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝗢𝗻/𝗢𝗳𝗳',
-versioning='𝗩𝗲𝗿𝘀𝗶𝗼𝗻 𝗦𝗲𝗹𝗲𝗰𝘁𝗶𝗼𝗻',
-takeUrProfit='𝗧𝗮𝗸𝗲 𝗣𝗿𝗼𝗳𝗶𝘁 %',
-stopLosing='𝗦𝘁𝗼𝗽-𝗟𝗼𝘀𝘀 %' 
-chopTitle= '𝗧𝗼𝗴𝗴𝗹𝗲 𝗖𝗵𝗼𝗽 𝗙𝗶𝗹𝘁𝗲𝗿 𝗢𝗻/𝗢𝗳𝗳',
-chopValtxt='𝗔𝗱𝗷𝘂𝘀𝘁 𝗙𝗶𝗹𝘁𝗲𝗿 𝗩𝗮𝗹𝘂𝗲',
-plotTxt= '𝗣𝗹𝗼𝘁 𝗧𝗲𝘅𝘁',
-plottxt=tab2+'𝗣𝗹𝗼𝘁 𝗧𝘆𝗽𝗲',
-plotOpt='𝗣𝗹𝗼𝘁 𝗢𝗽𝘁𝗶𝗼𝗻𝘀',
-HighlightAlerts="𝗧𝗼𝗴𝗴𝗹𝗲 𝗔𝗹𝗲𝗿𝘁 𝗛𝗶𝗴𝗵𝗹𝗶𝗴𝗵𝘁𝘀 𝗼𝗻 𝗖𝗵𝗮𝗿𝘁 𝗢𝗻/𝗢𝗳𝗳",
-candleSwitch='𝗧𝗼𝗴𝗴𝗹𝗲 𝗔𝗹𝗲𝗿𝘁 𝗛𝗶𝗴𝗵𝗹𝗶𝗴𝗵𝘁𝘀 𝗼𝗻 𝗖𝗮𝗻𝗱𝗹𝗲𝘀 𝗢𝗻/𝗢𝗳𝗳',
-statMenu=' ',
-timeRange='𝗧𝗼𝗴𝗴𝗹𝗲 𝗗𝗮𝘁𝗲 𝗥𝗮𝗻𝗴𝗲 𝗢𝗻/𝗢𝗳𝗳',
-tpslOpt= '𝗧𝗼𝗴𝗴𝗹𝗲 𝗦𝗟/𝗧𝗣 𝗢𝗻/𝗢𝗳𝗳',
-HighlightCol='𝗛𝗶𝗴𝗵𝗹𝗶𝗴𝗵𝘁 𝗖𝗼𝗹𝗼𝗿',
-AlertCandleCol='𝗔𝗹𝗲𝗿𝘁 𝗖𝗮𝗻𝗱𝗹𝗲 𝗖𝗼𝗹𝗼𝗿𝗶𝗻𝗴',
-exitTitle='𝗦𝘂𝗴𝗴𝗲𝘀𝘁𝗲𝗱 𝗘𝘅𝗶𝘁 𝗥𝗮𝗻𝗴𝗲',
-stopRange='𝗦𝘂𝗴𝗴𝗲𝘀𝘁𝗲𝗱 𝗦𝘁𝗼𝗽 𝗥𝗮𝗻𝗴𝗲',
-ShortEntryText= '𝗦𝗵𝗼𝗿𝘁 𝗘𝗻𝘁𝗿𝘆 𝗡𝗲𝗮𝗿',
-LastLongPrice='𝗟𝗮𝘀𝘁 𝗟𝗼𝗻𝗴 𝗘𝗻𝘁𝗿𝘆:',
+MGSwitchTitle='𝗧𝗼𝗴𝗴𝗹𝗲  𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝗢𝗻/𝗢𝗳𝗳',
+versioning='𝗩𝗲𝗿𝘀𝗶𝗼𝗻  𝗦𝗲𝗹𝗲𝗰𝘁𝗶𝗼𝗻',
+takeUrProfit='𝗧𝗮𝗸𝗲  𝗣𝗿𝗼𝗳𝗶𝘁  %',
+stopLosing='𝗦𝘁𝗼𝗽-𝗟𝗼𝘀𝘀  %'
+chopTitle=  '𝗧𝗼𝗴𝗴𝗹𝗲  𝗖𝗵𝗼𝗽  𝗙𝗶𝗹𝘁𝗲𝗿  𝗢𝗻/𝗢𝗳𝗳',
+chopValtxt='𝗔𝗱𝗷𝘂𝘀𝘁  𝗙𝗶𝗹𝘁𝗲𝗿  𝗩𝗮𝗹𝘂𝗲',
+plotTxt=  '𝗣𝗹𝗼𝘁  𝗧𝗲𝘅𝘁',
+plottxt=tab2+'𝗣𝗹𝗼𝘁  𝗧𝘆𝗽𝗲',
+plotOpt='𝗣𝗹𝗼𝘁  𝗢𝗽𝘁𝗶𝗼𝗻𝘀',
+HighlightAlerts="𝗧𝗼𝗴𝗴𝗹𝗲  𝗔𝗹𝗲𝗿𝘁  𝗛𝗶𝗴𝗵𝗹𝗶𝗴𝗵𝘁𝘀  𝗼𝗻  𝗖𝗵𝗮𝗿𝘁  𝗢𝗻/𝗢𝗳𝗳",
+candleSwitch='𝗧𝗼𝗴𝗴𝗹𝗲  𝗔𝗹𝗲𝗿𝘁  𝗛𝗶𝗴𝗵𝗹𝗶𝗴𝗵𝘁𝘀  𝗼𝗻  𝗖𝗮𝗻𝗱𝗹𝗲𝘀  𝗢𝗻/𝗢𝗳𝗳',
+statMenu='  ',
+timeRange='𝗧𝗼𝗴𝗴𝗹𝗲  𝗗𝗮𝘁𝗲  𝗥𝗮𝗻𝗴𝗲  𝗢𝗻/𝗢𝗳𝗳',
+tpslOpt=  '𝗧𝗼𝗴𝗴𝗹𝗲  𝗦𝗟/𝗧𝗣  𝗢𝗻/𝗢𝗳𝗳',
+HighlightCol='𝗛𝗶𝗴𝗵𝗹𝗶𝗴𝗵𝘁  𝗖𝗼𝗹𝗼𝗿',
+AlertCandleCol='𝗔𝗹𝗲𝗿𝘁  𝗖𝗮𝗻𝗱𝗹𝗲  𝗖𝗼𝗹𝗼𝗿𝗶𝗻𝗴',
+exitTitle='𝗦𝘂𝗴𝗴𝗲𝘀𝘁𝗲𝗱  𝗘𝘅𝗶𝘁  𝗥𝗮𝗻𝗴𝗲',
+stopRange='𝗦𝘂𝗴𝗴𝗲𝘀𝘁𝗲𝗱  𝗦𝘁𝗼𝗽  𝗥𝗮𝗻𝗴𝗲',
+ShortEntryText=  '𝗦𝗵𝗼𝗿𝘁  𝗘𝗻𝘁𝗿𝘆  𝗡𝗲𝗮𝗿',
+LastLongPrice='𝗟𝗮𝘀𝘁  𝗟𝗼𝗻𝗴  𝗘𝗻𝘁𝗿𝘆:',
 Long='𝗟𝗼𝗻𝗴',
 Short='𝗦𝗵𝗼𝗿𝘁',
-LastShortPrice='𝗟𝗮𝘀𝘁 𝗦𝗵𝗼𝗿𝘁 𝗘𝗻𝘁𝗿𝘆:',
+LastShortPrice='𝗟𝗮𝘀𝘁  𝗦𝗵𝗼𝗿𝘁  𝗘𝗻𝘁𝗿𝘆:',
 docsLink='www.mytradepartner.com',
-exitTrade='𝙚𝙭𝙞𝙩 𝙩𝙧𝙖𝙙𝙚'
-bTxt="𝗕𝘂𝘆 " ,
-sTxt="𝗦𝗲𝗹𝗹 ",
-bTxt2="𝗟𝗼𝗻𝗴 ",
+exitTrade='𝙚𝙭𝙞𝙩  𝙩𝙧𝙖𝙙𝙚'
+bTxt="𝗕𝘂𝘆  "  ,
+sTxt="𝗦𝗲𝗹𝗹  ",
+bTxt2="𝗟𝗼𝗻𝗴  ",
 sTxt2="𝗦𝗵𝗼𝗿𝘁",
 BST1="𝗕𝘂𝘆+𝗦𝗲𝗹𝗹",
-BST2="𝗕𝘂𝘆+𝗦𝗲𝗹𝗹 [𝗦𝗵𝗼𝘄 𝗣𝗿𝗶𝗰𝗲]",
+BST2="𝗕𝘂𝘆+𝗦𝗲𝗹𝗹  [𝗦𝗵𝗼𝘄  𝗣𝗿𝗶𝗰𝗲]",
 BST3="𝗨𝗽+𝗗𝗼𝘄𝗻",
 BST4='𝗠𝗶𝗻𝗶𝗺𝗮𝗹',
 BST5="𝗟𝗼𝗻𝗴+𝗦𝗵𝗼𝗿𝘁",
@@ -772,47 +771,47 @@ Plots="𝗣𝗹𝗼𝘁𝘀",
 Labels="𝗟𝗮𝗯𝗲𝗹𝘀",
 None="𝗡𝗼𝗻𝗲",
 Crown="♕",
-Down ="𝗗𝗼𝘄𝗻",
+Down  ="𝗗𝗼𝘄𝗻",
 Up="𝗨𝗽",
 highlights=HighlightCol,
 Buyy="𝗕𝘂𝘆",
 Selll="𝗦𝗲𝗹𝗹",
-releaseValue= "𝟮.𝟬.𝟮",
-kt='@𝗵𝗲𝗿𝗶𝗳' ,
-usrMenu=" ════════ 𝗨𝘀𝗲𝗿 𝗠𝗲𝗻𝘂 ══════════",
+releaseValue=  "𝟮.𝟬.𝟮",
+kt='@𝗵𝗲𝗿𝗶𝗳'  ,
+usrMenu="  ════════  𝗨𝘀𝗲𝗿  𝗠𝗲𝗻𝘂  ══════════",
 On='𝗢𝗻',
 Off='𝗢𝗳𝗳',
 Small='𝗦𝗺𝗮𝗹𝗹',
 Normal='𝗡𝗼𝗿𝗺𝗮𝗹',
 Large='𝗟𝗮𝗿𝗴𝗲',
-sizeTxt= tab2+'𝗟𝗮𝗯𝗲𝗹 𝗦𝗶𝘇𝗲 𝗣𝗿𝗲𝗳𝗲𝗿𝗲𝗻𝗰𝗲',
-choosePlotType=tab2+'𝗣𝗹𝗼𝘁 𝗧𝘆𝗽𝗲',x_='❨',_x='❩'
-ending=tab2+'════════════ ',
-menuline= '════════════ ',
-last_buy_alert='𝗟𝗮𝘀𝘁 𝗕𝘂𝘆 𝗔𝗹𝗲𝗿𝘁',
-last_sell_alert='𝗟𝗮𝘀𝘁 𝗦𝗲𝗹𝗹 𝗔𝗹𝗲𝗿𝘁',
+sizeTxt=  tab2+'𝗟𝗮𝗯𝗲𝗹  𝗦𝗶𝘇𝗲  𝗣𝗿𝗲𝗳𝗲𝗿𝗲𝗻𝗰𝗲',
+choosePlotType=tab2+'𝗣𝗹𝗼𝘁  𝗧𝘆𝗽𝗲',x_='❨',_x='❩'
+ending=tab2+'════════════  ',
+menuline=  '════════════  ',
+last_buy_alert='𝗟𝗮𝘀𝘁  𝗕𝘂𝘆  𝗔𝗹𝗲𝗿𝘁',
+last_sell_alert='𝗟𝗮𝘀𝘁  𝗦𝗲𝗹𝗹  𝗔𝗹𝗲𝗿𝘁',
 vwma_stats='𝗩𝗪𝗠𝗔',
-_100_ema='𝟭𝟬𝟬 𝗘𝗠𝗔',
-_200_ema='𝟮𝟬𝟬 𝗘𝗠𝗔',
+_100_ema='𝟭𝟬𝟬  𝗘𝗠𝗔',
+_200_ema='𝟮𝟬𝟬  𝗘𝗠𝗔',
 sma_txt='𝗦𝗠𝗔',
-price_now='𝗣𝗿𝗶𝗰𝗲 𝗡𝗼𝘄',
-marketgod_version='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝗩𝗲𝗿𝘀𝗶𝗼𝗻',
-chop_filter='𝗖𝗵𝗼𝗽 𝗙𝗶𝗹𝘁𝗲𝗿',
+price_now='𝗣𝗿𝗶𝗰𝗲  𝗡𝗼𝘄',
+marketgod_version='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝗩𝗲𝗿𝘀𝗶𝗼𝗻',
+chop_filter='𝗖𝗵𝗼𝗽  𝗙𝗶𝗹𝘁𝗲𝗿',
 Buy='𝗕𝘂𝘆',
 Sell='𝗦𝗲𝗹𝗹'
-specialThx=' 𝘄𝗶𝘁𝗵 𝘀𝗽𝗲𝗰𝗶𝗮𝗹 𝘁𝗵𝗮𝗻𝗸𝘀 𝘁𝗼  @𝗵𝗲𝗿𝗶𝗳'
-MG1='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟭',
-MG2='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟮',
-MG3='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟯',
-MG4='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟰',
-MG5='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟱',
-MG6='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟲'
-MG7='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟳',
-MG8='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟴' ,
-MG9='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱 𝘃𝟵',
-IGx= '𝗜𝗰𝗵𝗶𝗺𝗼𝗸𝘂 𝗚𝗼𝗱' ,
-MGx='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱𝘅²' 
-//## !<---------ᴜꜱᴇʀ ᴍᴇɴᴜ------------>
+specialThx='  𝘄𝗶𝘁𝗵  𝘀𝗽𝗲𝗰𝗶𝗮𝗹  𝘁𝗵𝗮𝗻𝗸𝘀  𝘁𝗼    @𝗵𝗲𝗿𝗶𝗳'
+MG1='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟭',
+MG2='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟮',
+MG3='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟯',
+MG4='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟰',
+MG5='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟱',
+MG6='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟲'
+MG7='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟳',
+MG8='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟴'  ,
+MG9='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱  𝘃𝟵',
+IGx=  '𝗜𝗰𝗵𝗶𝗺𝗼𝗸𝘂  𝗚𝗼𝗱'  ,
+MGx='𝗠𝗮𝗿𝗸𝗲𝘁𝗚𝗼𝗱𝘅²'
+//##  !<---------ᴜꜱᴇʀ  ᴍᴇɴᴜ------------>
 Pos=timeframe.isminutes?.25:timeframe.isseconds?.05:timeframe.isintraday?.5:timeframe.isdaily?1:timeframe.isweekly?5:timeframe.ismonthly?10:.5
 len=10,
 Neg=Pos*-1,
@@ -820,11 +819,11 @@ settings=input(true,title=usrMenu),
 MGSwitch=true
 versionSelect=input(MG8,title=versioning,options=[MG1,MG2,MG3,MG4,MG5,MG6,MG7,MG8,MGx,IGx])
 userInput_chopToggle=input(true,title=chopTitle),
-chopVal=input(31,title=tab2+chopValtxt,minval=0,maxval=1000) 
+chopVal=input(31,title=tab2+chopValtxt,minval=0,maxval=1000)
 userInput_chopValue=userInput_chopToggle==true?chopVal:userInput_chopToggle==false?15:na
 dateTest=input(true,title=timeRange),
-userInput_startingDate=input(defval=timestamp("01 Jan 2010 00:00"),title=tab2+"𝗘𝗻𝘁𝗿𝘆 𝗧𝗶𝗺𝗲",type=input.time), 
-userInput_endingDate=input(defval=timestamp("31 Dec 2069 00:00"),title=tab2+"𝗘𝘅𝗶𝘁 𝗧𝗶𝗺𝗲",type=input.time)
+userInput_startingDate=input(defval=timestamp("01  Jan  2010  00:00"),title=tab2+"𝗘𝗻𝘁𝗿𝘆  𝗧𝗶𝗺𝗲",type=input.time),
+userInput_endingDate=input(defval=timestamp("31  Dec  2069  00:00"),title=tab2+"𝗘𝘅𝗶𝘁  𝗧𝗶𝗺𝗲",type=input.time)
 userInput_TPSLToggle=input(false,title=tpslOpt),
 userInput_takeProfitPercentage=input(title=tab2+takeUrProfit,type=input.float,defval=5,minval=0,maxval=1000,step=0.1)
 userInput_stopLossPercentage=input(title=tab2+stopLosing,type=input.float,defval=2,minval=0,maxval=100,step=0.1)
@@ -838,104 +837,104 @@ satTxt=tostring(close,"#.########"),
 priceTxt=tostring(close,'#,###.##'),
 rangeUpper=60,
 rangeLower=5,
-//## !<---------ʙᴏᴏʟᴇᴀɴ ------------>
-bool use_lag_line=true,
-bool use_span_cross=true,
-bool use_price_location=true,
-bool chk=false,
-bool buy=false,
-bool sell=false,
-bool use_tk_cross=true,
-bool use_pk_cross=true
-bool lag_line_location_weight=true,
-bool use_kumo_breakout=true,
-bool use_lag_line_location=true,
-//## !<---------ꜰᴜɴᴄᴛɪᴏɴꜱ ------------>
+//##  !<---------ʙᴏᴏʟᴇᴀɴ  ------------>
+bool  use_lag_line=true,
+bool  use_span_cross=true,
+bool  use_price_location=true,
+bool  chk=false,
+bool  buy=false,
+bool  sell=false,
+bool  use_tk_cross=true,
+bool  use_pk_cross=true
+bool  lag_line_location_weight=true,
+bool  use_kumo_breakout=true,
+bool  use_lag_line_location=true,
+//##  !<---------ꜰᴜɴᴄᴛɪᴏɴꜱ  ------------>
 window()=>
-    time>= userInput_startingDate and time<= userInput_endingDate?true:false
+        time>=  userInput_startingDate  and  time<=  userInput_endingDate?true:false
 MGz(src,length)=>
-    MGz=0.0
-    MGz:=(src+nz(MGz[1]*(length-1)))/length
-    MGz
+        MGz=0.0
+        MGz:=(src+nz(MGz[1]*(length-1)))/length
+        MGz
 bcwsma(s,l,m)=>
-    _bcwsma=0.0
-    _s=s
-    _l=l
-    _m=m
-    _bcwsma:=(_m*_s+(_l-_m)*nz(_bcwsma[1]))/_l
-    _bcwsma
+        _bcwsma=0.0
+        _s=s
+        _l=l
+        _m=m
+        _bcwsma:=(_m*_s+(_l-_m)*nz(_bcwsma[1]))/_l
+        _bcwsma
 MGxMA(src,length)=>
-    MA_s=0.0
-    MA_s:=(src+nz(MA_s[1]*(length-1)))/length
-    MA_s
+        MA_s=0.0
+        MA_s:=(src+nz(MA_s[1]*(length-1)))/length
+        MA_s
 MGxx(src,length)=>wma(2*wma(close,10/2)-wma(close,10),round(sqrt(10)))
 Mx(a,b)=>
-    UD=a+b
-    LD=a-b 
-    [UD,LD]
+        UD=a+b
+        LD=a-b
+        [UD,LD]
 [UD,LD]=Mx(close,close)
 MGT(x,y)=>
-    norm=0.0
-    sum=0.0
-    for i=0 to y-1
-        weight=(y-i)*y
-        norm:=norm+weight
-        sum:=sum+x[i]*weight
-    sum/norm
+        norm=0.0
+        sum=0.0
+        for  i=0  to  y-1
+                weight=(y-i)*y
+                norm:=norm+weight
+                sum:=sum+x[i]*weight
+        sum/norm
 macd(source,fastLength,slowLength)=>
-    fastMA=ema(source,fastLength)
-    slowMA=ema(source,slowLength)
-    macd=fastMA-slowMA
-    macd
+        fastMA=ema(source,fastLength)
+        slowMA=ema(source,slowLength)
+        macd=fastMA-slowMA
+        macd
 stc(length,fastLength,slowLength)=>
-    factor= .5
-    m=macd(haclose,fastLength,slowLength)     
-    v1=lowest(m,length)
-    v2=highest(m,length)-v1    
-    f1=0.0,pf=0.0,f2=0.0,pff=0.0
-    f1:=(v2>0?((m-v1)/v2)*100:nz(f1[1])) 
-    pf:=(na(pf[1])?f1:pf[1]+(factor*(f1-pf[1]))) 
-    v3=lowest(pf,length) 
-    v4=highest(pf,length)-v3     
-    f2:=(v4>0?((pf-v3)/v4)*100:nz(f2[1])) 
-    pff:=(na(pff[1])?f2:pff[1]+(factor*(f2-pff[1])))
+        factor=  .5
+        m=macd(haclose,fastLength,slowLength)
+        v1=lowest(m,length)
+        v2=highest(m,length)-v1
+        f1=0.0,pf=0.0,f2=0.0,pff=0.0
+        f1:=(v2>0?((m-v1)/v2)*100:nz(f1[1]))
+        pf:=(na(pf[1])?f1:pf[1]+(factor*(f1-pf[1])))
+        v3=lowest(pf,length)
+        v4=highest(pf,length)-v3
+        f2:=(v4>0?((pf-v3)/v4)*100:nz(f2[1]))
+        pff:=(na(pff[1])?f2:pff[1]+(factor*(f2-pff[1])))
 STC=stc(14,5,26),ma5=sma(haclose,20),cci=(haclose-ma5)/(0.015*dev(haclose,20))
-heikUpcolor()=>haclose>haopen and haclose[1]>haopen[1]
-heikDwncolor()=>haclose<= haopen and haclose[1]<haopen[1]
+heikUpcolor()=>haclose>haopen  and  haclose[1]>haopen[1]
+heikDwncolor()=>haclose<=  haopen  and  haclose[1]<haopen[1]
 _PerChange(lengthTime)=>
-    measuredChange=(close[0]-open[lengthTime])/open[lengthTime]*100
-    rangeHigh=float(na)
-    rangeLow=float(na)
-    for i=lengthTime to 0 by 1
-        rangeHigh:=i==lengthTime?high:high[i]>high[i+1]?high[i]:rangeHigh[1]
-        rangeLow:=i==lengthTime?low:low[i]<low[i+1]?low[i]:rangeLow[1]
-        rangeLow
-    start_to_high=(rangeHigh-open[lengthTime])/open[lengthTime]*100
-    start_to_low=(rangeLow-open[lengthTime])/open[lengthTime]*100
-    [measuredChange,start_to_high,start_to_low]
+        measuredChange=(close[0]-open[lengthTime])/open[lengthTime]*100
+        rangeHigh=float(na)
+        rangeLow=float(na)
+        for  i=lengthTime  to  0  by  1
+                rangeHigh:=i==lengthTime?high:high[i]>high[i+1]?high[i]:rangeHigh[1]
+                rangeLow:=i==lengthTime?low:low[i]<low[i+1]?low[i]:rangeLow[1]
+                rangeLow
+        start_to_high=(rangeHigh-open[lengthTime])/open[lengthTime]*100
+        start_to_low=(rangeLow-open[lengthTime])/open[lengthTime]*100
+        [measuredChange,start_to_high,start_to_low]
 [trend_change,to_high,to_low]=_PerChange(userInput_chopValue)
 length=userInput_chopValue,smoothing="EMA"
 atrConf(length)=>
-    trueRange=na(high[1])?high-low:max(max(high-low,abs(high-close[1])),abs(low-close[1]))
-    rma(trueRange,length)
+        trueRange=na(high[1])?high-low:max(max(high-low,abs(high-close[1])),abs(low-close[1]))
+        rma(trueRange,length)
 ATR=atrConf(userInput_chopValue)
 _inRange(cond)=>
-    bars=barssince(cond==true)
-    rangeLower<= bars and bars<= rangeUpper
+        bars=barssince(cond==true)
+        rangeLower<=  bars  and  bars<=  rangeUpper
 resolve(haclose,default)=>
-    if na(haclose)
-        close
-    else
-        haclose
+        if  na(haclose)
+                close
+        else
+                haclose
 f(input)=>sma(input,length)
 heikUpColor()=>haclose>haopen
-heikDownColor()=>haclose<= haopen        
+heikDownColor()=>haclose<=  haopen
 HMA(_src,_HLen)=>wma(2*wma(_src,_HLen/2)-wma(_src,_HLen),round(sqrt(_HLen)))
 EHMA(_src,_HLen)=>ema(2*ema(_src,_HLen/2)-ema(_src,_HLen),round(sqrt(_HLen)))
 THMA(_src,_HLen)=>wma(wma(_src,_HLen/3)*3-wma(_src,_HLen/2)-wma(_src,_HLen),_HLen)
 donchian(len)=>avg(lowest(len),highest(len))
-//## !<-------------------------------------------------------ᴛᴇᴄʜɴɪᴄᴀʟ ɪɴᴅɪᴄᴀᴛᴏʀꜱ ᴅᴇꜰɪɴᴇᴅ------------------------------------------------------->
-//## !<--------------------->
+//##  !<-------------------------------------------------------ᴛᴇᴄʜɴɪᴄᴀʟ  ɪɴᴅɪᴄᴀᴛᴏʀꜱ  ᴅᴇꜰɪɴᴇᴅ------------------------------------------------------->
+//##  !<--------------------->
 hgst=highest(hahigh,1),
 lwst=lowest(halow,1),
 periodK=14,
@@ -944,12 +943,12 @@ smoothK=4,
 K=sma(stoch(haclose,hahigh,halow,periodK),smoothK),
 D=sma(K,periodD),
 hi=highest(hahigh,9),
-lo=lowest(halow ,9)
+lo=lowest(halow  ,9)
 k=100*((haclose-lo)/(hi-lo)),
 pK=rma(k,3),
 pD=rma(pK,3),
 pJ=3*pK-2*pD,
-KDJ=avg(pK,pD) ,
+KDJ=avg(pK,pD)  ,
 trend2=5,
 bb_basis=sma(haclose,20),
 bb_dev=stdev(haclose,20),
@@ -959,18 +958,18 @@ useTrueRange=true,
 MA5=ema(haclose,20),
 rangema=ema(tr,20),
 upperkelt=MA5+rangema*1,
-lowerkelt=MA5-rangema*1  ,
+lowerkelt=MA5-rangema*1    ,
 bbr=(haclose-bb_lower)/(bb_upper-bb_lower)
 hGst=highest(high,1),
 lWst=lowest(low,1),
 avghigh=sma(hahigh,userInput_chopValue),
 avglow=sma(halow,userInput_chopValue),
-UP=hahigh>avghigh,DWN=halow<avglow ,
+UP=hahigh>avghigh,DWN=halow<avglow  ,
 MGod=avg(HMA(haclose,userInput_chopValue),EHMA(haclose,userInput_chopValue),THMA(haclose,userInput_chopValue))
 dt=time-time[1],
-UpHATrend=haclose>open ,
-DwnHATrend=haclose<open,haUp=UpHATrend[2] and UpHATrend[1],
-haDwn=DwnHATrend[2] and DwnHATrend[1]
+UpHATrend=haclose>open  ,
+DwnHATrend=haclose<open,haUp=UpHATrend[2]  and  UpHATrend[1],
+haDwn=DwnHATrend[2]  and  DwnHATrend[1]
 MGRed=#ff0050,
 MGRed2=#7c0e4a,
 colorUP=#2ba598,
@@ -989,13 +988,13 @@ increment=.03,
 maximum=.03,
 psar=sar(start,increment,maximum),
 dir=psar<close?1:-1,
-bPsar=dir==1 and dir[1]==-1,sPsar=dir==-1 and dir[1]==1,
+bPsar=dir==1  and  dir[1]==-1,sPsar=dir==-1  and  dir[1]==1,
 shortlen=5,
 longlen=10,
 short=ema(volume,shortlen),
 long=ema(volume,longlen),
 osc=100*(short-long)/long,
-ad=cum(c==high and c==low or high==low?0:((2*c-low-high)/(high-low))),
+ad=cum(c==high  and  c==low  or  high==low?0:((2*c-low-high)/(high-low))),
 periods=6,
 smooth=14,
 r1=ema(price,periods),
@@ -1007,12 +1006,12 @@ rr=iff(r5==0,100,100-(100/(1+(r4/r5)))),
 M0=MGxx(close,userInput_chopValue),M1=MGxMA(M0,30),
 S0=MGxMA(M1,10),M2=MGT(M0,10),
 rsi=rsi(close,9),
-percent=(change(close[14])) ,
+percent=(change(close[14]))  ,
 diff=((close)/close[userInput_chopValue])*100,
 percentchange=diff-100,
-perUp=percent>= Pos ,
-perDwn=percent<= Neg ,
-piffUp=trend_change >Pos ,
+perUp=percent>=  Pos  ,
+perDwn=percent<=  Neg  ,
+piffUp=trend_change  >Pos  ,
 piffDwn=trend_change<Neg,
 lookBackMedian=100,
 lookBackTouches=50,
@@ -1021,12 +1020,12 @@ lrs=(lrc-lrc[10])/10,
 alrs=sma(lrs,9),
 MFlength=14,
 MFsrc=close,
-upperMF=sum(volume*(change(MFsrc)<= 0?0:MFsrc),MFlength),
-lowerMF=sum(volume*(change(MFsrc)>= 0?0:MFsrc),MFlength),
+upperMF=sum(volume*(change(MFsrc)<=  0?0:MFsrc),MFlength),
+lowerMF=sum(volume*(change(MFsrc)>=  0?0:MFsrc),MFlength),
 mf=rsi(upperMF,lowerMF),
 MFUp=crossover(mf,0),
 MFDwn=crossunder(mf,0),
-HH=(high==highest(high,userInput_chopValue)) ,
+HH=(high==highest(high,userInput_chopValue))  ,
 LL=(low==lowest(low,userInput_chopValue)),
 ap=close,esa=ema(ap,10),
 d=ema(abs(ap-esa),10),
@@ -1034,10 +1033,10 @@ ci=(ap-esa)/(0.015*d),
 tci=ema(ci,5),
 wt1=tci,
 wt2=sma(wt1,4),
-wtiUp=wt2-wt1<0 ,
+wtiUp=wt2-wt1<0  ,
 wtiDwn=wt2-wt1>0,
-float newHigh= na,
-float newLow=na,
+float  newHigh=  na,
+float  newLow=na,
 EMA10=ema(close,10),
 Highest=high==highest(high,10),
 Lowest=low==lowest(low,10),
@@ -1056,60 +1055,60 @@ leadLine2=offset(donchian(laggingSpan2Periods),displacement),
 tk_cross_bull=crossover(conversionLine,baseLine),
 tk_cross_bear=crossunder(conversionLine,baseLine),
 cross_y=(conversionLine[1]*(baseLine-baseLine[1])-baseLine[1]*(conversionLine-conversionLine[1]))/((baseLine-baseLine[1])-(conversionLine-conversionLine[1])),
-tk_cross_below_kumo=cross_y<= leadLine2[1] and cross_y<= leadLine1[1] and cross_y<= leadLine2 and cross_y<= leadLine1,
-tk_cross_above_kumo=cross_y>= leadLine2[1] and cross_y>= leadLine1[1] and cross_y>= leadLine2 and cross_y>= leadLine1,
-tk_cross_inside_kumo=(not tk_cross_below_kumo) and(not tk_cross_above_kumo),
+tk_cross_below_kumo=cross_y<=  leadLine2[1]  and  cross_y<=  leadLine1[1]  and  cross_y<=  leadLine2  and  cross_y<=  leadLine1,
+tk_cross_above_kumo=cross_y>=  leadLine2[1]  and  cross_y>=  leadLine1[1]  and  cross_y>=  leadLine2  and  cross_y>=  leadLine1,
+tk_cross_inside_kumo=(not  tk_cross_below_kumo)  and(not  tk_cross_above_kumo),
 pk_cross_bull=crossover(haclose,baseLine),
 pk_cross_bear=crossunder(haclose,baseLine),
 cross_pk_y=(haclose[1]*(baseLine-baseLine[1])-baseLine[1]*(haclose-haclose[1]))/((baseLine-baseLine[1])-(haclose-haclose[1])),
-pk_cross_below_kumo=cross_pk_y<= leadLine2[1] and cross_pk_y<= leadLine1[1] and cross_pk_y<= leadLine2 and cross_pk_y<= leadLine1,
-pk_cross_above_kumo=cross_pk_y>= leadLine2[1] and cross_pk_y>= leadLine1[1] and cross_pk_y>= leadLine2 and cross_pk_y>= leadLine1,
-pk_cross_inside_kumo=(not pk_cross_below_kumo) and(not pk_cross_above_kumo),
-kumo_bull=(crossover(haclose,leadLine1) and leadLine1>leadLine2) or(crossover(haclose,leadLine2) and leadLine2>leadLine1),
-kumo_bear=(crossunder(haclose,leadLine2) and leadLine1>leadLine2) or(crossunder(haclose,leadLine1) and leadLine2>leadLine1),
-price_below_kumo=(haclose<leadLine2 and haclose<leadLine1),
-price_above_kumo=(haclose>leadLine2 and haclose>leadLine1),
-price_inside_kumo=(not price_below_kumo) and(not price_above_kumo),
+pk_cross_below_kumo=cross_pk_y<=  leadLine2[1]  and  cross_pk_y<=  leadLine1[1]  and  cross_pk_y<=  leadLine2  and  cross_pk_y<=  leadLine1,
+pk_cross_above_kumo=cross_pk_y>=  leadLine2[1]  and  cross_pk_y>=  leadLine1[1]  and  cross_pk_y>=  leadLine2  and  cross_pk_y>=  leadLine1,
+pk_cross_inside_kumo=(not  pk_cross_below_kumo)  and(not  pk_cross_above_kumo),
+kumo_bull=(crossover(haclose,leadLine1)  and  leadLine1>leadLine2)  or(crossover(haclose,leadLine2)  and  leadLine2>leadLine1),
+kumo_bear=(crossunder(haclose,leadLine2)  and  leadLine1>leadLine2)  or(crossunder(haclose,leadLine1)  and  leadLine2>leadLine1),
+price_below_kumo=(haclose<leadLine2  and  haclose<leadLine1),
+price_above_kumo=(haclose>leadLine2  and  haclose>leadLine1),
+price_inside_kumo=(not  price_below_kumo)  and(not  price_above_kumo),
 no_dp_leadLine1=avg(conversionLine,baseLine),
 no_dp_leadLine2=donchian(laggingSpan2Periods),
 lead_line_cross_bull=crossover(no_dp_leadLine1,no_dp_leadLine2),
 lead_line_cross_bear=crossunder(no_dp_leadLine1,no_dp_leadLine2),
-price_below_kumo:=(haclose<no_dp_leadLine2 and haclose<no_dp_leadLine1),
-price_above_kumo:=(haclose>no_dp_leadLine2 and haclose>no_dp_leadLine1),
-price_inside_kumo:=(not price_below_kumo) and(not price_above_kumo),
+price_below_kumo:=(haclose<no_dp_leadLine2  and  haclose<no_dp_leadLine1),
+price_above_kumo:=(haclose>no_dp_leadLine2  and  haclose>no_dp_leadLine1),
+price_inside_kumo:=(not  price_below_kumo)  and(not  price_above_kumo),
 past_price=offset(haclose,displacement),
 lag_line_bull_cross=haclose>haclose[displacement],
 lag_line_bear_cross=haclose<haclose[displacement],
-past_price_below_kumo=(past_price<leadLine2 and past_price<leadLine1),
-past_price_above_kumo=(past_price>leadLine2 and past_price>leadLine1),
-past_price_inside_kumo=(leadLine2<past_price and past_price<leadLine1) and(leadLine1<past_price and past_price<leadLine2)
-bullMove=lead_line_cross_bull or kumo_bull or tk_cross_bull or pk_cross_bull or lag_line_bull_cross,
-bearMove=lead_line_cross_bear or kumo_bear or tk_cross_bear or pk_cross_bear or lag_line_bear_cross,
+past_price_below_kumo=(past_price<leadLine2  and  past_price<leadLine1),
+past_price_above_kumo=(past_price>leadLine2  and  past_price>leadLine1),
+past_price_inside_kumo=(leadLine2<past_price  and  past_price<leadLine1)  and(leadLine1<past_price  and  past_price<leadLine2)
+bullMove=lead_line_cross_bull  or  kumo_bull  or  tk_cross_bull  or  pk_cross_bull  or  lag_line_bull_cross,
+bearMove=lead_line_cross_bear  or  kumo_bear  or  tk_cross_bear  or  pk_cross_bear  or  lag_line_bear_cross,
 changeVal=(change(close[14])),
 _diff=((haclose)/haclose[userInput_chopValue])*100,
 _pchange=_diff-100,
-valUp=changeVal>= Pos,
-valDwn=changeVal<= Neg,
-changeUp=_pchange >Pos,
+valUp=changeVal>=  Pos,
+valDwn=changeVal<=  Neg,
+changeUp=_pchange  >Pos,
 changeDwn=_pchange<Neg,
 lbR=userInput_chopValue,
 lbL=lbR,
 plFound=na(pivotlow(osc,lbL,lbR))?false:true,
 phFound=na(pivothigh(osc,lbL,lbR))?false:true,
-priceHL=low[lbR]>valuewhen(plFound,low[lbR],1) ,
+priceHL=low[lbR]>valuewhen(plFound,low[lbR],1)  ,
 priceLH=high[lbR]<valuewhen(phFound,high[lbR],1),
 priceLL=low[lbR]<valuewhen(plFound,low[lbR],1),
 priceHH=high[lbR]>valuewhen(phFound,high[lbR],1),
-xUPx=priceHL ,
+xUPx=priceHL  ,
 xDWNx=priceLH,
-percUp=percentchange>= Pos ,
-percDwn=percentchange<= Neg,
+percUp=percentchange>=  Pos  ,
+percDwn=percentchange<=  Neg,
 difference=(highest(high,14)+lowest(low,14)/highest(high,14)-lowest(low,14))/100,
 Diff_Over_Time=ema(difference,10),
-MGxDup=crossover(difference,Diff_Over_Time) and HH,
-MGxDwn= crossunder(difference,Diff_Over_Time) and LL,
-x2Buy=MGxDup and percUp,
-x2Sell=MGxDwn and percDwn,
+MGxDup=crossover(difference,Diff_Over_Time)  and  HH,
+MGxDwn=  crossunder(difference,Diff_Over_Time)  and  LL,
+x2Buy=MGxDup  and  percUp,
+x2Sell=MGxDwn  and  percDwn,
 tk_cross_score:=resolve(tk_cross_score[1],0),
 tk_cross_weight=1,
 tk_cross_weak_bullish_points=.5,
@@ -1155,38 +1154,38 @@ price_location_weight=1
 price_location_above_points=1,
 price_location_inside_points=0,
 price_location_below_points=-1,
-tk_cross_score:=tk_cross_bull and tk_cross_below_kumo?tk_cross_weak_bullish_points:tk_cross_score
-tk_cross_score:=tk_cross_bull and tk_cross_inside_kumo?tk_cross_neutral_bullish_points:tk_cross_score,
-tk_cross_score:=tk_cross_bull and tk_cross_above_kumo?tk_cross_strong_bullish_points:tk_cross_score
-tk_cross_score:=tk_cross_bear and tk_cross_below_kumo?tk_cross_strong_bearish_points:tk_cross_score,
-tk_cross_score:=tk_cross_bear and tk_cross_inside_kumo?tk_cross_neutral_bearish_points:tk_cross_score
-tk_cross_score:=tk_cross_bear and tk_cross_above_kumo?tk_cross_weak_bearish_points:tk_cross_score,
-pk_cross_score:=pk_cross_bull and pk_cross_below_kumo?pk_cross_weak_bullish_points:pk_cross_score
-pk_cross_score:=pk_cross_bull and pk_cross_inside_kumo?pk_cross_neutral_bullish_points:pk_cross_score,
-pk_cross_score:=pk_cross_bull and pk_cross_above_kumo?pk_cross_strong_bullish_points:pk_cross_score
-pk_cross_score:=pk_cross_bear and pk_cross_below_kumo?pk_cross_strong_bearish_points:pk_cross_score,
-pk_cross_score:=pk_cross_bear and pk_cross_inside_kumo?pk_cross_neutral_bearish_points:pk_cross_score,
-pk_cross_score:=pk_cross_bear and pk_cross_above_kumo?pk_cross_weak_bearish_points:pk_cross_score
-kumo_breakout_score:=kumo_bull and price_above_kumo?kumo_breakout_bullish_points:kumo_breakout_score,
-kumo_breakout_score:=kumo_bear and price_below_kumo?kumo_breakout_bearish_points:kumo_breakout_score
-span_cross_score:=lead_line_cross_bull and price_below_kumo?span_cross_weak_bullish_points:span_cross_score,
-span_cross_score:=lead_line_cross_bull and price_inside_kumo?span_cross_neutral_bullish_points:span_cross_score
-span_cross_score:=lead_line_cross_bull and price_above_kumo?span_cross_strong_bullish_points:span_cross_score,
-span_cross_score:=lead_line_cross_bear and price_above_kumo?span_cross_weak_bearish_points:span_cross_score
-span_cross_score:=lead_line_cross_bear and price_inside_kumo?span_cross_neutral_bearish_points:span_cross_score,
-span_cross_score:=lead_line_cross_bear and price_below_kumo?span_cross_strong_bearish_points:span_cross_score
-lag_line_cross_score:=lag_line_bull_cross and past_price_below_kumo?lag_line_cross_weak_bullish_points:lag_line_cross_score,
-lag_line_cross_score:=lag_line_bull_cross and past_price_inside_kumo?lag_line_cross_neutral_bullish_points:lag_line_cross_score
-lag_line_cross_score:=lag_line_bull_cross and past_price_above_kumo?lag_line_cross_strong_bullish_points:lag_line_cross_score,
-lag_line_cross_score:=lag_line_bear_cross and past_price_above_kumo?lag_line_cross_weak_bearish_points:lag_line_cross_score
-lag_line_cross_score:=lag_line_bear_cross and past_price_inside_kumo?lag_line_cross_neutral_bearish_points:lag_line_cross_score,
-lag_line_cross_score:=lag_line_bear_cross and past_price_below_kumo?lag_line_cross_strong_bearish_points:lag_line_cross_score
+tk_cross_score:=tk_cross_bull  and  tk_cross_below_kumo?tk_cross_weak_bullish_points:tk_cross_score
+tk_cross_score:=tk_cross_bull  and  tk_cross_inside_kumo?tk_cross_neutral_bullish_points:tk_cross_score,
+tk_cross_score:=tk_cross_bull  and  tk_cross_above_kumo?tk_cross_strong_bullish_points:tk_cross_score
+tk_cross_score:=tk_cross_bear  and  tk_cross_below_kumo?tk_cross_strong_bearish_points:tk_cross_score,
+tk_cross_score:=tk_cross_bear  and  tk_cross_inside_kumo?tk_cross_neutral_bearish_points:tk_cross_score
+tk_cross_score:=tk_cross_bear  and  tk_cross_above_kumo?tk_cross_weak_bearish_points:tk_cross_score,
+pk_cross_score:=pk_cross_bull  and  pk_cross_below_kumo?pk_cross_weak_bullish_points:pk_cross_score
+pk_cross_score:=pk_cross_bull  and  pk_cross_inside_kumo?pk_cross_neutral_bullish_points:pk_cross_score,
+pk_cross_score:=pk_cross_bull  and  pk_cross_above_kumo?pk_cross_strong_bullish_points:pk_cross_score
+pk_cross_score:=pk_cross_bear  and  pk_cross_below_kumo?pk_cross_strong_bearish_points:pk_cross_score,
+pk_cross_score:=pk_cross_bear  and  pk_cross_inside_kumo?pk_cross_neutral_bearish_points:pk_cross_score,
+pk_cross_score:=pk_cross_bear  and  pk_cross_above_kumo?pk_cross_weak_bearish_points:pk_cross_score
+kumo_breakout_score:=kumo_bull  and  price_above_kumo?kumo_breakout_bullish_points:kumo_breakout_score,
+kumo_breakout_score:=kumo_bear  and  price_below_kumo?kumo_breakout_bearish_points:kumo_breakout_score
+span_cross_score:=lead_line_cross_bull  and  price_below_kumo?span_cross_weak_bullish_points:span_cross_score,
+span_cross_score:=lead_line_cross_bull  and  price_inside_kumo?span_cross_neutral_bullish_points:span_cross_score
+span_cross_score:=lead_line_cross_bull  and  price_above_kumo?span_cross_strong_bullish_points:span_cross_score,
+span_cross_score:=lead_line_cross_bear  and  price_above_kumo?span_cross_weak_bearish_points:span_cross_score
+span_cross_score:=lead_line_cross_bear  and  price_inside_kumo?span_cross_neutral_bearish_points:span_cross_score,
+span_cross_score:=lead_line_cross_bear  and  price_below_kumo?span_cross_strong_bearish_points:span_cross_score
+lag_line_cross_score:=lag_line_bull_cross  and  past_price_below_kumo?lag_line_cross_weak_bullish_points:lag_line_cross_score,
+lag_line_cross_score:=lag_line_bull_cross  and  past_price_inside_kumo?lag_line_cross_neutral_bullish_points:lag_line_cross_score
+lag_line_cross_score:=lag_line_bull_cross  and  past_price_above_kumo?lag_line_cross_strong_bullish_points:lag_line_cross_score,
+lag_line_cross_score:=lag_line_bear_cross  and  past_price_above_kumo?lag_line_cross_weak_bearish_points:lag_line_cross_score
+lag_line_cross_score:=lag_line_bear_cross  and  past_price_inside_kumo?lag_line_cross_neutral_bearish_points:lag_line_cross_score,
+lag_line_cross_score:=lag_line_bear_cross  and  past_price_below_kumo?lag_line_cross_strong_bearish_points:lag_line_cross_score
 lag_line_placement_score:=past_price_above_kumo?lag_line_location_above_points:lag_line_placement_score,
 lag_line_placement_score:=past_price_inside_kumo?lag_line_location_inside_points:lag_line_placement_score
 lag_line_placement_score:=past_price_below_kumo?lag_line_location_below_points:lag_line_placement_score,
-price_below_kumo:=haclose<leadLine2 and haclose<leadLine1,
-price_above_kumo:=haclose>leadLine2 and haclose>leadLine1,
-price_inside_kumo:=not price_below_kumo and not price_above_kumo
+price_below_kumo:=haclose<leadLine2  and  haclose<leadLine1,
+price_above_kumo:=haclose>leadLine2  and  haclose>leadLine1,
+price_inside_kumo:=not  price_below_kumo  and  not  price_above_kumo
 price_placement_score:=price_above_kumo?price_location_above_points:price_placement_score,
 price_placement_score:=price_inside_kumo?price_location_inside_points:price_placement_score,
 price_placement_score:=price_below_kumo?price_location_below_points:price_placement_score
@@ -1196,52 +1195,52 @@ KOx=kumo_breakout_weight*kumo_breakout_score,
 SPx=(span_cross_weight*span_cross_score),
 LLx=(lag_line_cross_weight*lag_line_cross_score),
 PLx=(price_location_weight*price_placement_score)
-iScore=avg(TKx,PKx,KOx,SPx ,LLx ,PLx),
+iScore=avg(TKx,PKx,KOx,SPx  ,LLx  ,PLx),
 Eout=ema(price,20),
 last8h=highest(price,8),
 lastl8=lowest(price,8),
-bullish=cross(close,Eout)==1 and close[1]<close ,
-bearish=cross(close,Eout)==1 and close[1]>close 
+bullish=cross(close,Eout)==1  and  close[1]<close  ,
+bearish=cross(close,Eout)==1  and  close[1]>close
 magic=donchian(10),
 sauce=donchian(10),
-tkReady=(tk_cross_below_kumo or tk_cross_inside_kumo or tk_cross_above_kumo),
-pkReady=(pk_cross_below_kumo or pk_cross_inside_kumo or pk_cross_above_kumo),
-ppReady=(past_price_below_kumo or past_price_above_kumo or past_price_inside_kumo)
-IchimokuTrigger=tkReady or pkReady or ppReady,
-ichmokuBuy=bullMove and IchimokuTrigger and rising(pD,1) and rising(pJ[1],2) and heikUpcolor() ,
-ichmokuSell=bearMove and IchimokuTrigger and falling(pD,1) and falling(pJ[1],2) and heikDwncolor() 
+tkReady=(tk_cross_below_kumo  or  tk_cross_inside_kumo  or  tk_cross_above_kumo),
+pkReady=(pk_cross_below_kumo  or  pk_cross_inside_kumo  or  pk_cross_above_kumo),
+ppReady=(past_price_below_kumo  or  past_price_above_kumo  or  past_price_inside_kumo)
+IchimokuTrigger=tkReady  or  pkReady  or  ppReady,
+ichmokuBuy=bullMove  and  IchimokuTrigger  and  rising(pD,1)  and  rising(pJ[1],2)  and  heikUpcolor()  ,
+ichmokuSell=bearMove  and  IchimokuTrigger  and  falling(pD,1)  and  falling(pJ[1],2)  and  heikDwncolor()
 v6AvgHi=ema(high,10),
 v6AvgLo=ema(low,10),
 v6Uptrend=high>v6AvgHi,
 v6DwnTrend=low<v6AvgLo,
 v7AvgHi=sma(hahigh,userInput_chopValue),
 v7AvgLo=sma(halow,userInput_chopValue),
-v7Up=open<close and close>v7AvgHi,
-v7Dwn=open>close and close<v7AvgLo
-hiVol=volume[1]==highest(volume,200) or volume[1]==lowest(volume,200),
-loClo=close[1]==lowest(low,200) ,hiClo=close[1]==highest(high,200)
-c1buy=HH and rising(M0,1) and rising(rr,1) and rising(bbr,1),
-c1sell=LL and falling(M0,1) and falling(bbr,1) and falling(rr,1) ,
-c2buy=c1buy and rising(pD,1) and rising(bbr,1) and rising(rr,1) ,
-c2sell=c1sell and falling(pD,1),
-c3buy=c2buy and Highest,
-c3sell=c2sell and Lowest,
-c4buy=c3buy and rising(KDJ,1) and wtiUp,
-c4sell=c3sell and falling(KDJ,1) and wtiDwn
-_trendingUp=HH or priceHL,
-_trendingDwn=LL or priceLH ,
-Xpercent=(change(close[14])) ,
+v7Up=open<close  and  close>v7AvgHi,
+v7Dwn=open>close  and  close<v7AvgLo
+hiVol=volume[1]==highest(volume,200)  or  volume[1]==lowest(volume,200),
+loClo=close[1]==lowest(low,200)  ,hiClo=close[1]==highest(high,200)
+c1buy=HH  and  rising(M0,1)  and  rising(rr,1)  and  rising(bbr,1),
+c1sell=LL  and  falling(M0,1)  and  falling(bbr,1)  and  falling(rr,1)  ,
+c2buy=c1buy  and  rising(pD,1)  and  rising(bbr,1)  and  rising(rr,1)  ,
+c2sell=c1sell  and  falling(pD,1),
+c3buy=c2buy  and  Highest,
+c3sell=c2sell  and  Lowest,
+c4buy=c3buy  and  rising(KDJ,1)  and  wtiUp,
+c4sell=c3sell  and  falling(KDJ,1)  and  wtiDwn
+_trendingUp=HH  or  priceHL,
+_trendingDwn=LL  or  priceLH  ,
+Xpercent=(change(close[14]))  ,
 xdiff=((close)/close[userInput_chopValue])*100,
 Xpercentchange=xdiff-100,
-xperUp=percent>= Pos ,
-xperDwn=percent<= Neg,
-xpiffUp=percentchange >Pos ,
-xpiffDwn=percentchange<Neg     
+xperUp=percent>=  Pos  ,
+xperDwn=percent<=  Neg,
+xpiffUp=percentchange  >Pos  ,
+xpiffDwn=percentchange<Neg
 os=20,
 xbars=100,
 hb=abs(highestbars(rsi,xbars)),
-lb=abs(lowestbars(rsi,xbars)), 
-max=float(na) ,
+lb=abs(lowestbars(rsi,xbars)),
+max=float(na)  ,
 max_rsi=float(na),
 min=float(na),
 min_rsi=float(na),
@@ -1255,117 +1254,117 @@ min:=lb==0?close:na(min[1])?close:min[1],
 min_rsi:=lb==0?rsi:na(min_rsi[1])?rsi:min_rsi[1],
 pUp=haclose<close,
 pDwn=haclose>close,
-_v6b=rising(pJ,1) and rising(K,1) ,
-_v6s=falling(pJ,1) and falling(K,1) ,
-_vxb=rising(bbr,1) and rising(rsi,1) ,
-_vxs= falling(bbr,1) and falling(rsi,1) 
-mgb=_vxb and _v6b,
-mgs=_vxs and _v6s,
-comp4b=rising(bbr,1)  and rising(M0,1),
-comp4s=falling(bbr,1)  and falling(M0,1)   
+_v6b=rising(pJ,1)  and  rising(K,1)  ,
+_v6s=falling(pJ,1)  and  falling(K,1)  ,
+_vxb=rising(bbr,1)  and  rising(rsi,1)  ,
+_vxs=  falling(bbr,1)  and  falling(rsi,1)
+mgb=_vxb  and  _v6b,
+mgs=_vxs  and  _v6s,
+comp4b=rising(bbr,1)    and  rising(M0,1),
+comp4s=falling(bbr,1)    and  falling(M0,1)
 longStopPrice=close-(close*(userInput_stopLossPercentage/100)),
-longTakeProfitPrice=close+(close*(userInput_takeProfitPercentage/100)), 
+longTakeProfitPrice=close+(close*(userInput_takeProfitPercentage/100)),
 shortStopPrice=close+(close*(userInput_stopLossPercentage/100)),
 shortTakeProfitPrice=close-(close*(userInput_takeProfitPercentage/100)),
-//## !<--------- ᴄᴏɴᴅɪᴛɪᴏɴᴀʟꜱ  ------------>
-if syminfo.type=='crypto' and syminfo.basecurrency != 'USD' 
-    chk:=true
-if  HH 
-    newHigh:=close
-    
-if LL 
-    newLow:=close
-    
-if hahigh>max 
-    max:=high  
-    max
-    
-if rsi>max_rsi  
-    max_rsi:=rsi
-    max_rsi
-    
-if halow<min 
-    min:=low  
-    min
-    
-if rsi<min_rsi 
-    min_rsi:=rsi
-    min_rsi
-//## !<---------ʙᴜʏ ᴀɴᴅ ꜱᴇʟʟ ᴄʀɪᴛᴇʀɪᴀꜱ ------------>
-v1Buy=haclose[1] and pJ>KDJ and conversionLine<haclose and rising(K,1) and rising(pJ,2),
-v1Sell=haclose[1] and conversionLine>haclose  and falling(pJ,1) and pJ<KDJ and falling(pJ,1)
-v2Buy=haclose[1] and rising(rr,1) and pK<pJ and rising(close,1) and UP ,       
-v2Sell=haclose[1] and falling(rr,1) and pK>pJ and falling(close,1) and DWN
-v3Buy=haclose[1] and rising(STC,1) and rising(EMA10,1) and rising(cci,2) and wtiUp,
-v3Sell=haclose[1] and falling(STC,1) and falling(EMA10,1) and falling(cci,2) and wtiDwn
-v4Buy=haclose[1] and bullMove and pJ>KDJ and price>M0 and heikUpcolor(),     
-v4Sell=haclose[1] and bearMove and pJ<KDJ and price<M0 and heikDwncolor()
-v5Buy=haclose[1] and rising(M0,1) and rising(rr,1) and rising(bbr,1),            
-v5Sell=haclose[1] and falling(M0,1) and falling(rr,1) and falling(bbr,1) 
-v6Buy=haclose[1] and rising(pD,1) and rising(bbr,1) and rising(rr,1) and v6Uptrend,
-v6Sell=haclose[1] and falling(pD,1) and falling(bbr,1) and falling(rr,1) and v6DwnTrend
-v7Buy=haclose[1] and v7Up and pJ>K and rising(pD,1),                           
-v7Sell=haclose[1] and v7Dwn  and pJ<K and falling(pD,1)
-vxBuy=haclose[1] and v7Buy and heikUpcolor() and wtiUp,                          
-vxSell=haclose[1] and v7Sell and heikDwncolor() and wtiDwn
-igBuy=haclose[1] and ichmokuBuy and v7Buy and rising(pD,2) and newHigh,          
-igSell=haclose[1] and ichmokuSell and falling(pD,2) and v7Sell and newLow
-v8Buy=haclose[1] and v2Buy and v5Buy and v6Buy and v7Buy and close>haclose,    
-v8Sell=haclose[1] and v2Sell and v5Sell and v6Sell and v7Sell  and close<haclose
-v9Buy=v7Buy and halow==haopen,                                                
-v9Sell=v7Sell and haopen==hahigh  
-//## !<---------ᴠᴇʀꜱɪᴏɴ ꜱᴡɪᴛᴄʜ ꜰᴜɴᴄᴛɪᴏɴᴀʟɪᴛʏ ------------>
-buy:=versionSelect==MG1 and MGSwitch==true?v1Buy:versionSelect==MG2 and MGSwitch==true?v2Buy:versionSelect==MG3 and MGSwitch==true?v3Buy:versionSelect==MG4 and MGSwitch==true?v4Buy:versionSelect==MG5  and MGSwitch==true?v5Buy:versionSelect==MG6  and MGSwitch==true?v6Buy:
-     versionSelect==MG7  and MGSwitch==true?v7Buy:versionSelect==MG8 and MGSwitch==true?v8Buy:versionSelect==MG9 and MGSwitch==true?v9Buy:
-         versionSelect==MGx and MGSwitch==true?vxBuy:versionSelect==IGx and MGSwitch==true?igBuy:false
-sell:=versionSelect==MG1 and MGSwitch==true ?v1Sell:versionSelect==MG2 and MGSwitch==true?v2Sell:versionSelect==MG3 and MGSwitch==true?v3Sell:versionSelect==MG4 and MGSwitch==true?v4Sell:versionSelect==MG5 and MGSwitch==true ?v5Sell:versionSelect==MG6 and MGSwitch==true?v6Sell:
-     versionSelect==MG7 and MGSwitch==true?v7Sell:versionSelect==MG8 and MGSwitch==true?v8Sell:versionSelect==MG9 and MGSwitch==true?v9Sell:
-         versionSelect==MGx and MGSwitch==true?vxSell:versionSelect==IGx and MGSwitch==true?igSell:false
+//##  !<---------  ᴄᴏɴᴅɪᴛɪᴏɴᴀʟꜱ    ------------>
+if  syminfo.type=='crypto'  and  syminfo.basecurrency  !=  'USD'
+        chk:=true
+if    HH
+        newHigh:=close
+
+if  LL
+        newLow:=close
+
+if  hahigh>max
+        max:=high
+        max
+
+if  rsi>max_rsi
+        max_rsi:=rsi
+        max_rsi
+
+if  halow<min
+        min:=low
+        min
+
+if  rsi<min_rsi
+        min_rsi:=rsi
+        min_rsi
+//##  !<---------ʙᴜʏ  ᴀɴᴅ  ꜱᴇʟʟ  ᴄʀɪᴛᴇʀɪᴀꜱ  ------------>
+v1Buy=haclose[1]  and  pJ>KDJ  and  conversionLine<haclose  and  rising(K,1)  and  rising(pJ,2),
+v1Sell=haclose[1]  and  conversionLine>haclose    and  falling(pJ,1)  and  pJ<KDJ  and  falling(pJ,1)
+v2Buy=haclose[1]  and  rising(rr,1)  and  pK<pJ  and  rising(close,1)  and  UP  ,
+v2Sell=haclose[1]  and  falling(rr,1)  and  pK>pJ  and  falling(close,1)  and  DWN
+v3Buy=haclose[1]  and  rising(STC,1)  and  rising(EMA10,1)  and  rising(cci,2)  and  wtiUp,
+v3Sell=haclose[1]  and  falling(STC,1)  and  falling(EMA10,1)  and  falling(cci,2)  and  wtiDwn
+v4Buy=haclose[1]  andbullMoveandpJ>KDJandprice>M0andheikUpcolor(),
+v4Sell=haclose[1]andbearMoveandpJ<KDJandprice<M0andheikDwncolor()
+v5Buy=haclose[1]andrising(M0,1)andrising(rr,1)andrising(bbr,1),
+v5Sell=haclose[1]andfalling(M0,1)andfalling(rr,1)andfalling(bbr,1)
+v6Buy=haclose[1]andrising(pD,1)andrising(bbr,1)andrising(rr,1)andv6Uptrend,
+v6Sell=haclose[1]andfalling(pD,1)andfalling(bbr,1)andfalling(rr,1)andv6DwnTrend
+v7Buy=haclose[1]andv7UpandpJ>Kandrising(pD,1),
+v7Sell=haclose[1]andv7DwnandpJ<Kandfalling(pD,1)
+vxBuy=haclose[1]andv7BuyandheikUpcolor()andwtiUp,
+vxSell=haclose[1]andv7SellandheikDwncolor()andwtiDwn
+igBuy=haclose[1]andichmokuBuyandv7Buyandrising(pD,2)andnewHigh,
+igSell=haclose[1]andichmokuSellandfalling(pD,2)andv7SellandnewLow
+v8Buy=haclose[1]andv2Buyandv5Buyandv6Buyandv7Buyandclose>haclose,
+v8Sell=haclose[1]andv2Sellandv5Sellandv6Sellandv7Sellandclose<haclose
+v9Buy=v7Buyandhalow==haopen,
+v9Sell=v7Sellandhaopen==hahigh
+//##!<---------ᴠᴇʀꜱɪᴏɴꜱᴡɪᴛᴄʜꜰᴜɴᴄᴛɪᴏɴᴀʟɪᴛʏ------------>
+buy:=versionSelect==MG1andMGSwitch==true?v1Buy:versionSelect==MG2andMGSwitch==true?v2Buy:versionSelect==MG3andMGSwitch==true?v3Buy:versionSelect==MG4andMGSwitch==true?v4Buy:versionSelect==MG5andMGSwitch==true?v5Buy:versionSelect==MG6andMGSwitch==true?v6Buy:
+versionSelect==MG7andMGSwitch==true?v7Buy:versionSelect==MG8andMGSwitch==true?v8Buy:versionSelect==MG9andMGSwitch==true?v9Buy:
+versionSelect==MGxandMGSwitch==true?vxBuy:versionSelect==IGxandMGSwitch==true?igBuy:false
+sell:=versionSelect==MG1andMGSwitch==true?v1Sell:versionSelect==MG2andMGSwitch==true?v2Sell:versionSelect==MG3andMGSwitch==true?v3Sell:versionSelect==MG4andMGSwitch==true?v4Sell:versionSelect==MG5andMGSwitch==true?v5Sell:versionSelect==MG6andMGSwitch==true?v6Sell:
+versionSelect==MG7andMGSwitch==true?v7Sell:versionSelect==MG8andMGSwitch==true?v8Sell:versionSelect==MG9andMGSwitch==true?v9Sell:
+versionSelect==MGxandMGSwitch==true?vxSell:versionSelect==IGxandMGSwitch==true?igSell:false
 OscHelper:=buy==true?1:sell==true?0:OscHelper[1],
-longEntry=buy==true and OscHelper[1]==0,
-shortEntry=sell==true and OscHelper[1]==1,
-enterLong=longEntry ,
-exitLong =shortEntry
-var float priceAtCross=na,
-float buyLevel=valuewhen(longEntry,open,0),
-float sellLevel=valuewhen(shortEntry,open,0),
-float prevLong=fixnan(buyLevel),
-float prevShort=fixnan(sellLevel),
-var MGX_output_code=0
-MGX_output_code:=(longEntry==true)?1:0, 
-MGX_output_code:=(shortEntry==true) ?MGX_output_code+2:MGX_output_code
+longEntry=buy==trueandOscHelper[1]==0,
+shortEntry=sell==trueandOscHelper[1]==1,
+enterLong=longEntry,
+exitLong=shortEntry
+varfloatpriceAtCross=na,
+floatbuyLevel=valuewhen(longEntry,open,0),
+floatsellLevel=valuewhen(shortEntry,open,0),
+floatprevLong=fixnan(buyLevel),
+floatprevShort=fixnan(sellLevel),
+varMGX_output_code=0
+MGX_output_code:=(longEntry==true)?1:0,
+MGX_output_code:=(shortEntry==true)?MGX_output_code+2:MGX_output_code
 longCondition=longEntry,
-shortCondition=shortEntry 
-//## !<-------ᴘʟᴏᴛꜱ ᴀɴᴅ ʟᴀʙᴇʟꜱ-------------->
-n=time+3*dt ,N=close>1?"#,###.##":close<1 and close>0?'#.########':'##.###' ,labelCo=OscHelper==1?MGGreen2:OscHelper==0?MGRed2:invisibleColor,lim="------------------------------------------------------"
-float recentEntry=0,
+shortCondition=shortEntry
+//##!<-------ᴘʟᴏᴛꜱᴀɴᴅʟᴀʙᴇʟꜱ-------------->
+n=time+3*dt,N=close>1?"#,###.##":close<1andclose>0?'#.########':'##.###',labelCo=OscHelper==1?MGGreen2:OscHelper==0?MGRed2:invisibleColor,lim="------------------------------------------------------"
+floatrecentEntry=0,
 recentEntry:=OscHelper==1?buyLevel:OscHelper==0?sellLevel:0
-barcolor(color=longEntry and userInput_candleToggle?color.fuchsia:shortEntry and userInput_candleToggle?color.fuchsia:na),bgSig=longEntry and colorBG?MGGreen:shortEntry and colorBG?MGRed:na ,
+barcolor(color=longEntryanduserInput_candleToggle?color.fuchsia:shortEntryanduserInput_candleToggle?color.fuchsia:na),bgSig=longEntryandcolorBG?MGGreen:shortEntryandcolorBG?MGRed:na,
 plot(buyLevel,title=LastLongPrice,color=#ffffff00,editable=false),plot(sellLevel,title=LastShortPrice,color=#ffffff00,editable=false)
-plotshape(MGSwitch and window() and userInput_plotToggle and plotType==Plots and labelType==BST1 and OscHelper[1]==0 and  longEntry?longEntry:na ,color=MGGreen,text="𝗕𝘂𝘆",location= location.belowbar,style= shape.labelup,textcolor=MGText,size=size.tiny,title="Buy Plot")
-plotshape(MGSwitch and window() and userInput_plotToggle and plotType==Plots and labelType==BST1 and OscHelper[1]==1 and  shortEntry?shortEntry:na,color=MGRed,text="𝗦𝗲𝗹𝗹",location= location.abovebar,style= shape.labeldown,textcolor= MGText,size=size.tiny,title="Sell Plot")
-plotshape(MGSwitch and window() and userInput_plotToggle and plotType==Plots and labelType==BST5 and OscHelper[1]==0 and  longEntry?longEntry:na ,color=MGGreen,text="𝗟𝗼𝗻𝗴",location= location.belowbar,style= shape.labelup,textcolor= MGText,size=size.tiny,title="Long Plot")
-plotshape(MGSwitch and window() and userInput_plotToggle and plotType==Plots and labelType==BST5 and OscHelper[1]==1 and  shortEntry?shortEntry:na,color=MGRed,text="𝗦𝗵𝗼𝗿𝘁",location= location.abovebar,style= shape.labeldown,textcolor= MGText,size=size.tiny,title="Short Plot")
-plotshape(MGSwitch and window() and userInput_plotToggle and plotType==Plots and labelType==BST4 and OscHelper[1]==0 and  longEntry?longEntry:na ,color=MGGreen,text="♕",location= location.belowbar,style= shape.labelup,textcolor= MGText,size=size.tiny,title="Minimal Plot")
-plotshape(MGSwitch and window() and userInput_plotToggle and plotType==Plots and labelType==BST4 and OscHelper[1]==1 and  shortEntry?shortEntry:na,color=MGRed,text="♕",location= location.abovebar,style= shape.labeldown,textcolor= MGText,size=size.tiny,title="Minimal Plot")
-plotshape(MGSwitch and window() and userInput_plotToggle and plotType==Plots and labelType==BST3 and OscHelper[1]==0 and  longEntry?longEntry:na ,color=MGGreen,text="𝗨𝗽",location= location.belowbar,style= shape.labelup,textcolor=MGText,size=size.tiny,title="Buy Plot")
-plotshape(MGSwitch and window() and userInput_plotToggle and plotType==Plots and labelType==BST3 and OscHelper[1]==1 and  shortEntry?shortEntry:na,color=MGRed,text="𝗗𝗼𝘄𝗻",location= location.abovebar,style= shape.labeldown,textcolor= MGText,size=size.tiny,title="Sell Plot")
+plotshape(MGSwitchandwindow()anduserInput_plotToggleandplotType==PlotsandlabelType==BST1andOscHelper[1]==0andlongEntry?longEntry:na,color=MGGreen,text="𝗕𝘂𝘆",location=location.belowbar,style=shape.labelup,textcolor=MGText,size=size.tiny,title="BuyPlot")
+plotshape(MGSwitchandwindow()anduserInput_plotToggleandplotType==PlotsandlabelType==BST1andOscHelper[1]==1andshortEntry?shortEntry:na,color=MGRed,text="𝗦𝗲𝗹𝗹",location=location.abovebar,style=shape.labeldown,textcolor=MGText,size=size.tiny,title="SellPlot")
+plotshape(MGSwitchandwindow()anduserInput_plotToggleandplotType==PlotsandlabelType==BST5andOscHelper[1]==0andlongEntry?longEntry:na,color=MGGreen,text="𝗟𝗼𝗻𝗴",location=location.belowbar,style=shape.labelup,textcolor=MGText,size=size.tiny,title="LongPlot")
+plotshape(MGSwitchandwindow()anduserInput_plotToggleandplotType==PlotsandlabelType==BST5andOscHelper[1]==1andshortEntry?shortEntry:na,color=MGRed,text="𝗦𝗵𝗼𝗿𝘁",location=location.abovebar,style=shape.labeldown,textcolor=MGText,size=size.tiny,title="ShortPlot")
+plotshape(MGSwitchandwindow()anduserInput_plotToggleandplotType==PlotsandlabelType==BST4andOscHelper[1]==0andlongEntry?longEntry:na,color=MGGreen,text="♕",location=location.belowbar,style=shape.labelup,textcolor=MGText,size=size.tiny,title="MinimalPlot")
+plotshape(MGSwitchandwindow()anduserInput_plotToggleandplotType==PlotsandlabelType==BST4andOscHelper[1]==1andshortEntry?shortEntry:na,color=MGRed,text="♕",location=location.abovebar,style=shape.labeldown,textcolor=MGText,size=size.tiny,title="MinimalPlot")
+plotshape(MGSwitchandwindow()anduserInput_plotToggleandplotType==PlotsandlabelType==BST3andOscHelper[1]==0andlongEntry?longEntry:na,color=MGGreen,text="𝗨𝗽",location=location.belowbar,style=shape.labelup,textcolor=MGText,size=size.tiny,title="BuyPlot")
+plotshape(MGSwitchandwindow()anduserInput_plotToggleandplotType==PlotsandlabelType==BST3andOscHelper[1]==1andshortEntry?shortEntry:na,color=MGRed,text="𝗗𝗼𝘄𝗻",location=location.abovebar,style=shape.labeldown,textcolor=MGText,size=size.tiny,title="SellPlot")
 bgcolor(bgSig,80,title=highlights),plot(MGX_output_code,title="MGxOutput",editable=false,display=display.none)
-//## !<------------------strategy components-------------------------->
-if(longCondition) 
-    strategy.entry(Buy,strategy.long,when=window() and longCondition)
-    
-if(shortCondition) 
-    strategy.entry(Sell,strategy.short,when=window() and shortCondition)
-if longCondition and userInput_TPSLToggle 
-    strategy.entry(Buy,strategy.long,when=window() and longCondition)
-    line.new(bar_index[10],longStopPrice,bar_index,longStopPrice,color=color.red,style=line.style_solid,width=1)
-    line.new(bar_index[10],longTakeProfitPrice,bar_index,longTakeProfitPrice,color=color.green,style=line.style_solid,width=1)
-    strategy.exit(exitTrade,Buy,stop=longStopPrice,limit=longTakeProfitPrice)
-    
-if shortCondition and userInput_TPSLToggle
-    strategy.entry(Sell,strategy.short,when=window() and shortCondition)
-    line.new(bar_index[10],shortStopPrice,bar_index,shortStopPrice,color=color.red,style=line.style_solid,width=1)
-    line.new(bar_index[10],shortTakeProfitPrice,bar_index,shortTakeProfitPrice,color=color.green,style=line.style_solid,width=1)
-    strategy.exit(exitTrade,Sell,stop=shortStopPrice,limit=shortTakeProfitPrice)  
+//##!<------------------strategycomponents-------------------------->
+if(longCondition)
+strategy.entry(Buy,strategy.long,when=window()andlongCondition)
+
+if(shortCondition)
+strategy.entry(Sell,strategy.short,when=window()andshortCondition)
+iflongConditionanduserInput_TPSLToggle
+strategy.entry(Buy,strategy.long,when=window()andlongCondition)
+line.new(bar_index[10],longStopPrice,bar_index,longStopPrice,color=color.red,style=line.style_solid,width=1)
+line.new(bar_index[10],longTakeProfitPrice,bar_index,longTakeProfitPrice,color=color.green,style=line.style_solid,width=1)
+strategy.exit(exitTrade,Buy,stop=longStopPrice,limit=longTakeProfitPrice)
+
+ifshortConditionanduserInput_TPSLToggle
+strategy.entry(Sell,strategy.short,when=window()andshortCondition)
+line.new(bar_index[10],shortStopPrice,bar_index,shortStopPrice,color=color.red,style=line.style_solid,width=1)
+line.new(bar_index[10],shortTakeProfitPrice,bar_index,shortTakeProfitPrice,color=color.green,style=line.style_solid,width=1)
+strategy.exit(exitTrade,Sell,stop=shortStopPrice,limit=shortTakeProfitPrice)
 Expand (685 lines)
